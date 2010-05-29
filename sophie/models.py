@@ -13,7 +13,7 @@ class Category(models.Model):
     count = models.IntegerField(default = 0)
 
     def __unicode__(self):
-        return self.slug
+        return self.title
     
     @models.permalink
     def get_absolute_url(self):
@@ -51,7 +51,7 @@ class Post(models.Model):
     author = models.ForeignKey(User)
 
     def __unicode__(self):
-        return self.slug
+        return self.title
 
     @models.permalink
     def get_absolute_url(self):

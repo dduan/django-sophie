@@ -3,6 +3,9 @@ django-sophie
 
 Sophie is just another django-based blog engine.
 
+(Re)introducing Sophie
+----------------------
+
 Here are a few goals of the design of *Sophie*:
 
     *   Follow Django Applications' pluggability convention.

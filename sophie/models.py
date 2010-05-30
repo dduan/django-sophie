@@ -20,7 +20,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         return ('category_view', (), { 'category_slug': self.slug })
 
-class Post(models.Model):
+class Entry(models.Model):
     
     MARKDOWN = 1
     MARKUP_CHOICES = (

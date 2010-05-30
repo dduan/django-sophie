@@ -11,6 +11,7 @@ class Category(models.Model):
     slug = models.SlugField(primary_key = True, unique = True)
     blog = models.ForeignKey(Blog)
     count = models.IntegerField(default = 0)
+    shown = models.BooleanField(defualt = True)
 
     def __unicode__(self):
         return self.title

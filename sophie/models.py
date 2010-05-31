@@ -10,7 +10,7 @@ class Blog(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField()
-    slug = models.SlugField(primary_key = True, unique = True)
+    slug = models.SlugField(unique = True)
     blog = models.ForeignKey(Blog)
     count = models.IntegerField(default = 0)
     shown = models.BooleanField(default = True)
@@ -50,7 +50,6 @@ class Entry(models.Model):
     teaser_html = models.TextField(blank = True)
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
-    author = models.ForeignKey(User)
 
     def __unicode__(self):
         return self.title

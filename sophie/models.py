@@ -66,7 +66,7 @@ class Entry(models.Model):
             self.category.count = self.category.count + 1
             self.category.save()
 
-        self.last_updated = datetime.datetime.now()
+        self.last_update = datetime.datetime.now()
         self.body_html = markdown.markdown(self.body, ['codehilite'])
 
         if self.teaser:

@@ -13,7 +13,7 @@ class Category(models.Model):
     slug = models.SlugField(primary_key = True, unique = True)
     blog = models.ForeignKey(Blog)
     count = models.IntegerField(default = 0)
-    shown = models.BooleanField(defualt = True)
+    shown = models.BooleanField(default = True)
 
     def __unicode__(self):
         return self.title
@@ -29,16 +29,16 @@ class Entry(models.Model):
             (MARKDOWN, 'Markdown'),
     )
 
-    DRAFT = 0
-    PUBLISHED = 1
-    HIDDEN = 2
+    DRAFT_STATUS = 0
+    LIVE_STATUS = 1
+    HIDDEN_STATUS = 2
     STATUS_CHOICES = (
             (DRAFT_STATUS, 'Draft'),
             (LIVE_STATUS, 'Live'),
             (HIDDEN_STATUS, 'Hidden'),
     )
 
-    slug = models.SlugField(uinque = True, max_length = 250)
+    slug = models.SlugField(unique = True, max_length = 250)
     title = models.CharField(max_length = 250)
     pub_date = models.DateTimeField(default = datetime.datetime.now)
     last_update = models.DateTimeField()
@@ -48,7 +48,7 @@ class Entry(models.Model):
     body_html = models.TextField(blank = True)
     teaser = models.TextField(blank = True)
     teaser_html = models.TextField(blank = True)
-    status = models.PositiveIntegerField(defualt = DRAFT,
+    status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
     author = models.ForeignKey(User)
 

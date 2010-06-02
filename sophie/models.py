@@ -6,14 +6,21 @@ import markdown
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField()
+    slug = models.SlugField()
+
+    def __unicode__(self):
+        return self.title
 
 class Category(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField()
     slug = models.SlugField(unique = True)
     blog = models.ForeignKey(Blog)
-    count = models.IntegerField(default = 0)
+    count = models.IntegerField(default = 0, editable = False)
     shown = models.BooleanField(default = True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
 
     def __unicode__(self):
         return self.title
@@ -38,18 +45,22 @@ class Entry(models.Model):
             (HIDDEN_STATUS, 'Hidden'),
     )
 
+    category = models.ForeignKey(Category)
     slug = models.SlugField(unique = True, max_length = 250)
     title = models.CharField(max_length = 250)
     pub_date = models.DateTimeField(default = datetime.datetime.now)
-    last_update = models.DateTimeField()
+    last_update = models.DateTimeField(editable = False)
     markup = models.PositiveIntegerField(default = MARKDOWN, 
             choices = MARKUP_CHOICES)
     body = models.TextField(blank = True)
-    body_html = models.TextField(blank = True)
+    body_html = models.TextField(blank = True, editable = False)
     teaser = models.TextField(blank = True)
-    teaser_html = models.TextField(blank = True)
+    teaser_html = models.TextField(blank = True, editable = False)
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
+
+    class Meta:
+        verbose_name_plural = 'Entries'
 
     def __unicode__(self):
         return self.title

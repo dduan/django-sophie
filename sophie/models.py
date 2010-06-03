@@ -10,6 +10,9 @@ class Blog(models.Model):
     slug = models.SlugField()
     entry_per_page = models.PositiveIntegerField(default = 5)
 
+    class Meta:
+        ordering = ['id']
+
     def __unicode__(self):
         return self.title
 
@@ -65,6 +68,7 @@ class Entry(models.Model):
     objects = models.Manager()
 
     class Meta:
+        ordering = ['-pub_date']
         verbose_name_plural = 'Entries'
 
     def __unicode__(self):

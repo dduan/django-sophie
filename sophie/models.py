@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from managers import EntryManager
 import datetime
 import markdown
 
@@ -7,6 +8,7 @@ class Blog(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(blank = True)
     slug = models.SlugField()
+    entry_per_page = models.PositiveIntegerField(default = 5)
 
     def __unicode__(self):
         return self.title
@@ -58,6 +60,8 @@ class Entry(models.Model):
     teaser_html = models.TextField(blank = True, editable = False)
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
+
+    objects = EntryManager()
 
     class Meta:
         verbose_name_plural = 'Entries'

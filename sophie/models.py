@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from managers import EntryManager
+from managers import LiveEntryManager
 import datetime
 import markdown
 
@@ -61,7 +61,8 @@ class Entry(models.Model):
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
 
-    objects = EntryManager()
+    live = LiveEntryManager()
+    objects = models.Manager()
 
     class Meta:
         verbose_name_plural = 'Entries'

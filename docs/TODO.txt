@@ -1,11 +1,10 @@
-Swing Jar Hey (Planned) Feature List
-====================================
+django-sophie 1.0.0 (Planned) Feature List
+==========================================
 
 *   Blog Posting
 *   Category
 *   Feed
 *   Comments
-*   Comment moderation
 *   Code highlighting
 *   Pingback
 *   Tagging

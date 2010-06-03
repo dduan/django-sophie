@@ -5,7 +5,7 @@ import markdown
 
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
-    description = models.TextField()
+    description = models.TextField(blank = True)
     slug = models.SlugField()
 
     def __unicode__(self):
@@ -13,7 +13,7 @@ class Blog(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length = 200)
-    description = models.TextField()
+    description = models.TextField(blank = True)
     slug = models.SlugField(unique = True)
     blog = models.ForeignKey(Blog)
     count = models.IntegerField(default = 0, editable = False)

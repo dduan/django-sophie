@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # Reserved for future use, held on 0.1.0
     #(r'^tag/(?P<tag_slug>)/(?P<page_num>)/$', 'sophie.views.show_tag'),
     #(r'^archive/(?P<year>)/(?P<month>)/(?P<page_num>)/$',
-        'sophie.views.show_archive'),
+    #    'sophie.views.show_archive'),
     (r'^(?P<entry_slug>\w+)/$', 'sophie.views.show_entry', name='entry_view'),
 )
 

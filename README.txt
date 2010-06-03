@@ -20,6 +20,11 @@ Here are a few goals of the design of *Sophie*:
 To Developers
 -------------
 
+There are tons of great CMS project written in Django already.  
+Why another?
+
+This is an intentional violation of the DRY principle created out of
+the need of the author to study the Django framework. In other words,
 This is a *boring* Django-based project that does nothing more than
 simply applying plain Django knowledge found in the official docs as
 well as a couple of related books. Feel free to checkout the code and

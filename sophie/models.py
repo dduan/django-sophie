@@ -51,6 +51,7 @@ class Entry(models.Model):
     )
 
     category = models.ForeignKey(Category)
+    blog = models.ForeignKey(Blog, editable = False)
     slug = models.SlugField(unique = True, max_length = 250)
     title = models.CharField(max_length = 250)
     pub_date = models.DateTimeField(default = datetime.datetime.now)
@@ -88,6 +89,7 @@ class Entry(models.Model):
 
         self.last_update = datetime.datetime.now()
         self.body_html = markdown.markdown(self.body, ['codehilite'])
+        self.blog = category.blog
 
         if self.teaser:
             self.teaser_html = markdown.markdown(self.teaser, ['codehilite'])

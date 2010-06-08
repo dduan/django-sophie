@@ -2,7 +2,7 @@ django-sophie
 =============
 
 Sophie is just another django-based blog engine, that could run on
-a bit more database backend than usual.
+a bit more database backend, if any, than the rest.
 
 Design Goals
 ------------

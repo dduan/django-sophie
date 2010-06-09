@@ -69,8 +69,8 @@ class Entry(models.Model):
             choices = STATUS_CHOICES)
     author = models.ForeignKey(User)
 
-    live = LiveEntryManager()
     objects = models.Manager()
+    live = LiveEntryManager()
 
     class Meta:
         ordering = ['-pub_date']
@@ -93,7 +93,7 @@ class Entry(models.Model):
 
         self.last_update = datetime.datetime.now()
         self.body_html = markdown.markdown(self.body, ['codehilite'])
-        self.blog = category.blog
+        self.blog = self.category.blog
 
         if self.teaser:
             self.teaser_html = markdown.markdown(self.teaser, ['codehilite'])

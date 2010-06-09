@@ -19,7 +19,7 @@ urlpatterns = patterns('sophie.views',
 )
 
 # Feed urls
-urlpatterns+ = patterns('sophie.feeds',
+urlpatterns += patterns('sophie.feeds',
     url(r'^feed/$', 'BlogFeed', name='blog_feed'),
     url(r'^category/(?P<category_slug>\w+)/feed/$', 
         'CategoryFeed', name='blog_feed'),

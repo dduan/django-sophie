@@ -9,6 +9,8 @@ class Blog(models.Model):
     description = models.TextField(blank = True)
     slug = models.SlugField()
     entry_per_page = models.PositiveIntegerField(default = 5)
+    feed_length = models.PositiveIntegerField(default = 15)
+    full_length_feed = models.BooleanField(default = True)
 
     class Meta:
         ordering = ['id']

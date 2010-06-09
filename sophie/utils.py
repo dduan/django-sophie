@@ -2,6 +2,8 @@
 Utilities for django-sophie
 '''
 
+from models import Blog
+
 def get_blog(slug):
     ''' 
     get the blog entity identified by slug, if it doesn't

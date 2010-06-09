@@ -67,6 +67,7 @@ class Entry(models.Model):
     teaser_html = models.TextField(blank = True, editable = False)
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
+    author = models.ForeignKey(User)
 
     live = LiveEntryManager()
     objects = models.Manager()

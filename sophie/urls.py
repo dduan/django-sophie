@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from sophie.models import Blog
 
 # Page urls
 urlpatterns = patterns('sophie.views',
@@ -24,3 +25,16 @@ urlpatterns += patterns('sophie.feeds',
     url(r'^((?P<blog_slug>)/)?category/(?P<category_slug>\w+)/feed/$', 
         'CategoryFeed', name='blog_feed'),
 )
+
+# Sitemap urls
+
+sitemaps = {}
+
+blogs = Blog.objects.all()
+
+for blog in blogs:
+    sitemaps[blog.slug] = BlogSitemap(blog)
+
+urlpatterns += patterns(''
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', 
+        { 'sitemaps': sitemaps } )

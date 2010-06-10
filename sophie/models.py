@@ -19,6 +19,10 @@ class Blog(models.Model):
     def __unicode__(self):
         return self.title
 
+    @models.permalink
+    def get_aboslute_url(self):
+        return ('index_view', (), { 'blog_slug': self.slug })
+
 class Category(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(blank = True)

@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from managers import LiveEntryManager
 import datetime
-import markdown
 
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
@@ -10,6 +9,7 @@ class Blog(models.Model):
     slug = models.SlugField()
     entry_per_page = models.PositiveIntegerField(default = 5)
     feed_length = models.PositiveIntegerField(default = 15)
+    highlight_code = models.BooleanField(default = True)
     full_entry_in_page = models.BooleanField(default = True)
     full_entry_in_feed = models.BooleanField(default = True)
 
@@ -39,9 +39,11 @@ class Category(models.Model):
 
 class Entry(models.Model):
     
-    MARKDOWN = 1
+    HTML_SYNTAX = 0
+    MARKDOWN_SYNTAX = 1
     MARKUP_CHOICES = (
-            (MARKDOWN, 'Markdown'),
+            (HTML_SYNTAX, 'Html'),
+            (MARKDOWN_SYNTAX, 'Markdown'),
     )
 
     DRAFT_STATUS = 0
@@ -59,7 +61,7 @@ class Entry(models.Model):
     title = models.CharField(max_length = 250)
     pub_date = models.DateTimeField(default = datetime.datetime.now)
     last_update = models.DateTimeField(editable = False)
-    markup = models.PositiveIntegerField(default = MARKDOWN, 
+    markup = models.PositiveIntegerField(default = MARKDOWN_SYNTAX, 
             choices = MARKUP_CHOICES)
     body = models.TextField(blank = True)
     body_html = models.TextField(blank = True, editable = False)
@@ -92,11 +94,8 @@ class Entry(models.Model):
             self.category.save()
 
         self.last_update = datetime.datetime.now()
-        self.body_html = markdown.markdown(self.body, ['codehilite'])
         self.blog = self.category.blog
-
-        if self.teaser:
-            self.teaser_html = markdown.markdown(self.teaser, ['codehilite'])
+        self.apply_markup()
 
         super(Entry, self).save(*args, **kwargs)
 
@@ -107,3 +106,24 @@ class Entry(models.Model):
         self.category.save()
 
         super(Entry, self).delete(*args, **kwargs)
+    
+    def apply_markup(self):
+        """
+        Find markup method (do_markup) according to self.markup;
+        Determine whether to highlight the code inside the markup;
+        And finally apply the markup
+        """
+
+        if self.markup == MARKDOWN_SYNTAX:
+            from functools import partial
+            import markdown
+
+            # warning, here's a conditional operator hack
+            do_markup = partial(markdown.markdown, 
+                    extensions = self.highlight_code and ['codehilite'] or [])
+        else: # default to HTML_SYNTAX, do nothing
+            do_markup = lambda x: x
+        
+        self.body_html = do_markup(self.body)
+        if self.teaser:
+            self.teaser_html = do_markup(self.teaser)

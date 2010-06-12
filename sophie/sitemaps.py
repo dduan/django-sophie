@@ -15,4 +15,4 @@ class BlogSitemap(Sitemap):
         return Entry.live.filter( blog = self.blog )
 
     def lastmod(self, obj):
-        return obj.last_updated
+        return obj.last_update

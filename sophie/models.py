@@ -87,7 +87,7 @@ class Entry(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('post_view', (), { 'page_slug': self.slug })
+        return ('entry_view', (), { 'entry_slug': self.slug })
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 
@@ -118,13 +118,13 @@ class Entry(models.Model):
         And finally apply the markup
         """
 
-        if self.markup == MARKDOWN_SYNTAX:
+        if self.markup == self.MARKDOWN_SYNTAX:
             from functools import partial
             import markdown
 
             # warning, here's a conditional operator hack
             do_markup = partial(markdown.markdown, 
-                    extensions = self.highlight_code and ['codehilite'] or [])
+                    extensions = self.blog.highlight_code and ['codehilite'] or [])
         else: # default to HTML_SYNTAX, do nothing
             do_markup = lambda x: x
         

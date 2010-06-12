@@ -8,7 +8,7 @@ class BlogSitemap(Sitemap):
 
     def __init__(self, blog):
         " here blog is a Sophie.Blog instance "
-        this.blog = blog
+        self.blog = blog
         super(BlogSitemap, self).__init__()
 
     def items(self):

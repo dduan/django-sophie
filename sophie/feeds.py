@@ -1,4 +1,4 @@
-from django.contrib.syndication import Feed
+from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
 from sophie.utils import get_blog
 
@@ -15,7 +15,7 @@ class BaseFeed(Feed):
     def title(self, obj):
         return obj.title
 
-    def description(self. obj):
+    def description(self, obj):
         return obj.description
     
     def link(self, obj):

@@ -27,14 +27,13 @@ class LaidbackPaginator(Paginator):
         If number is a invalid integer, return page 1.
         If number exceed the max page number, return the last page.
         '''
-
         try:
             n = int(number)
-        except ValueError:
+        except (ValueError, TypeError):
             n = 1
 
         try:
-            return super(LaidbackPaginator, self).page(number)
+            return super(LaidbackPaginator, self).page(n)
         except (EmptyPage, InvalidPage):
             return super(LaidbackPaginator, self).page(self.num_pages)
 

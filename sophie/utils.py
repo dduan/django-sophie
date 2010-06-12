@@ -4,6 +4,7 @@ Utilities for django-sophie
 
 from models import Blog
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 def get_blog(slug):
     ''' 
@@ -15,4 +16,25 @@ def get_blog(slug):
         return Blog.objects.all()[0]
     else:
         return get_object_or_404(Blog, slug=slug)
+
+class LaidbackPaginator(Paginator):
+    '''
+    Overwrites the original page method so it could be more
+    tolerant to invalid page number.
+    '''
+    def page(self, number):
+        '''
+        If number is a invalid integer, return page 1.
+        If number exceed the max page number, return the last page.
+        '''
+
+        try:
+            n = int(number)
+        except ValueError:
+            n = 1
+
+        try:
+            return super(LaidbackPaginator, self).page(number)
+        except (EmptyPage, InvalidPage):
+            return super(LaidbackPaginator, self).page(self.num_pages)
 

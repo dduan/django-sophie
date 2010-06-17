@@ -8,7 +8,7 @@ def list_entries(request, blog_slug=None, page_num=1):
     blog = get_blog(blog_slug)
 
     pages = LaidbackPaginator(Entry.live.all(), blog.entry_per_page)
-    return render_to_response('list_entries.html', { 
+    return render_to_response('entry_list.html', { 
         'blog': blog,
         'page':pages.page(page_num),
         'category_list': Category.objects.filter(shown=True),
@@ -24,7 +24,7 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
     category = get_object_or_404(Category, slug=category_slug)
     entries = Entry.live.filter( category=category )
     pages = LaidbackPaginator(entries, blog.entry_per_page)
-    return render_to_response('category_view.html', { 
+    return render_to_response('category_details.html', { 
         'blog': blog,
         'category': category,
         'page': pages.page(page_num),
@@ -34,7 +34,7 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
 def show_entry(request, entry_slug, blog_slug=None):
     blog = get_blog(blog_slug)
     entry = get_object_or_404(Entry, slug=entry_slug)
-    return render_to_response('entry_view.html', { 
+    return render_to_response('entry_details.html', { 
         'blog': blog,
         'category_list': Category.objects.filter(shown=True),
         'entry': entry,

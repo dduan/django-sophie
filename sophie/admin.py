@@ -12,21 +12,15 @@ def delete_selected_action(modeladmin, request, queryset):
 delete_selected_action.short_description = "Delete Selected Items"
 
 def make_entry_live_action(modeladmin, request, queryset):
-    for entry in queryset:
-        entry.status = Entry.LIVE_STATUS
-        entry.save()
+    queryset.update( status = Entry.LIVE_STATUS )
 make_entry_live_action.short_description = "Make Selected Entries Live"
 
 def make_entry_hidden_action(modeladmin, request, queryset):
-    for entry in queryset:
-        entry.status = Entry.HIDDEN_STATUS
-        entry.save()
+    queryset.update( status = Entry.HIDDEN_STATUS )
 make_entry_hidden_action.short_description = "Make Selected Entries Hidden"
 
 def make_entry_draft_action(modeladmin, request, queryset):
-    for entry in queryset:
-        entry.status = Entry.DRAFT_STATUS
-        entry.save()
+    queryset.update( status = Entry.DRAFT_STATUS )
 make_entry_draft_action.short_description = "Make Selected Entries Drafts"
 
 class EntryAdmin(admin.ModelAdmin):

@@ -5,7 +5,7 @@ class EntryAdmin(admin.ModelAdmin):
     pass
 
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ('count',)
 
 class BlogAdmin(admin.ModelAdmin):
     pass

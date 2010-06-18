@@ -37,6 +37,7 @@ class EntryAdmin(admin.ModelAdmin):
             make_entry_hidden_action,
             make_entry_draft_action,
             )
+    prepopulated_fields = {'slug': ('title',)}
 
     def get_actions(self, request):
         actions = super(EntryAdmin, self).get_actions(request)
@@ -46,9 +47,10 @@ class EntryAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     save_on_top = True
     readonly_fields = ('count',)
+    prepopulated_fields = {'slug': ('title',)}
 
 class BlogAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(Category, CategoryAdmin)

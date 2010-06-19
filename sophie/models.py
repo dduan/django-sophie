@@ -20,7 +20,7 @@ class Blog(models.Model):
         return self.title
 
     @models.permalink
-    def get_aboslute_url(self):
+    def get_absolute_url(self):
         return ('index_view', (), { 'blog_slug': self.slug })
 
 class Category(models.Model):
@@ -87,7 +87,9 @@ class Entry(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('entry_view', (), { 'entry_slug': self.slug })
+        return ('entry_view', (), { 
+            'blog_slug' : self.blog.slug,
+            'entry_slug': self.slug })
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 

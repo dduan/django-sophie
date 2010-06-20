@@ -39,7 +39,9 @@ class Category(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('category_view', (), { 'category_slug': self.slug })
+        return ('category_view', (), { 
+            'blog_slug': self.blog.slug,
+            'category_slug': self.slug })
 
 class Entry(models.Model):
     

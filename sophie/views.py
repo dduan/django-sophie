@@ -11,7 +11,7 @@ def list_entries(request, blog_slug=None, page_num=1):
     return render_to_response('entry_list.html', { 
         'blog': blog,
         'page':pages.page(page_num),
-        'category_list': Category.objects.filter(shown=True),
+        'category_list': Category.objects.filter(blog=blog, shown=True),
         })
 
 def show_index(request, blog_slug=None):
@@ -28,7 +28,7 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
         'blog': blog,
         'category': category,
         'page': pages.page(page_num),
-        'category_list': Category.objects.filter(shown=True),
+        'category_list': Category.objects.filter(blog=blog, shown=True),
         })
 
 def show_entry(request, entry_slug, blog_slug=None):
@@ -36,7 +36,7 @@ def show_entry(request, entry_slug, blog_slug=None):
     entry = get_object_or_404(Entry, slug=entry_slug)
     return render_to_response('entry_details.html', { 
         'blog': blog,
-        'category_list': Category.objects.filter(shown=True),
+        'category_list': Category.objects.filter(blog=blog, shown=True),
         'entry': entry,
         })
 

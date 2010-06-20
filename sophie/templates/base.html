@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>{% block title %}{% endblock title %}</title>
+    
+</head>
+<body class="{% block pagetype %}{% endblock pagetype %}">
+    <div id="header"> 
+        <h1 id="blog-title">{{ blog.title }}</h1>
+        <span "blog-descripition">{{ blog.description }}</span>
+        {% block header_extra %}{% endblock header_extra %} 
+    </div>
+    <div id="content"> 
+        <div id="main-wrapper">
+            {% block main %}{% endblock main %} 
+        </div>
+        <div id="navi-wrapper">
+            {% block navi %}{% endblock navi %}
+        </div>
+    </div>
+    <div id="footer"> 
+        {% block footer_extra %}{% endblock footer_extra %} 
+    </div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from sophie.models import Blog, Category, Entry
+from sophie.models import Category, Entry
 from sophie.utils import get_blog, LaidbackPaginator
-import logging
 
 def list_entries(request, blog_slug=None, page_num=1):
     ''' renders requested page, a list of date-ordred entries '''

@@ -11,12 +11,16 @@
 {% block main %}
 <div id="entry_list">
     {% for entry in page.object_list %}
-    <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
+    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
     <div class="entry-meta-info">
         Published @
-        <span class="entry-pub-time">{{ entry.pub_date|date:"DATETIME_FORMAT" }}</span>
+        <span class="entry-pub-time">
+            {{ entry.pub_date|date:"DATETIME_FORMAT" }}
+        </span>
         by
-        <span class="entry-author">{{ entry.author.get_full_name}}</span>
+        <span class="entry-author">
+            {{ entry.author.get_full_name}}
+        </span>
     </div>
     {% if blog.full_entry_in_page %}
         <div>{{ entry.body_html|safe }}</div>

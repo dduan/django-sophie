@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from managers import LiveEntryManager
+from managers import LiveEntryManager, ShownCategoryManager
 import datetime
 
 class Blog(models.Model):
@@ -23,6 +23,12 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return ('index_view', (), { 'blog_slug': self.slug })
 
+    def get_categories(self):
+        return Category.visible.filter(blog=self)
+    
+    def get_entries(self):
+        return Entry.live.filter(blog=self)
+
 class Category(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(blank = True)
@@ -30,6 +36,9 @@ class Category(models.Model):
     blog = models.ForeignKey(Blog)
     count = models.IntegerField(default = 0)
     shown = models.BooleanField(default = True)
+
+    objects = models.Manager()
+    visible = ShownCategoryManager()
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -42,6 +51,9 @@ class Category(models.Model):
         return ('category_view', (), { 
             'blog_slug': self.blog.slug,
             'category_slug': self.slug })
+
+    def get_entries(self):
+        return Entry.live.filter(category=self)
 
 class Entry(models.Model):
     

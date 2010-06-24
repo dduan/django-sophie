@@ -5,8 +5,7 @@ from sophie.utils import get_blog, LaidbackPaginator
 def list_entries(request, blog_slug=None, page_num=1):
     ''' renders requested page, a list of date-ordred entries '''
     blog = get_blog(blog_slug)
-
-    pages = LaidbackPaginator(Entry.live.all(), blog.entry_per_page)
+    pages = LaidbackPaginator(Entry.live.filter(blog=blog), blog.entry_per_page)
     return render_to_response('entry_list.html', { 
         'blog': blog,
         'page':pages.page(page_num),
@@ -20,7 +19,7 @@ def show_index(request, blog_slug=None):
 def show_category(request, blog_slug=None, category_slug=None, page_num=1):
     ''' lists entries under category specified by category_slug '''
     blog = get_blog(blog_slug)
-    category = get_object_or_404(Category, slug=category_slug)
+    category = get_object_or_404(Category, blog=blog, slug=category_slug)
     entries = Entry.live.filter( category=category )
     pages = LaidbackPaginator(entries, blog.entry_per_page)
     return render_to_response('category_details.html', { 

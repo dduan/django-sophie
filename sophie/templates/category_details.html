@@ -6,13 +6,13 @@
 
 {% block main %}
 <div id="page-description">
-    The content of this page is under {{ categoty.title }}
+    The content of this page is under {{ category.title }}
 </div>
 
 {% for entry in page.object_list %}
     <h2 class="entry-title">{{ entry.title }}</h2>
     <div class="entry-body">
-    {% if blog.show_full_entry %}
+    {% if blog.full_entry_in_page %}
         {{ entry.body_html|safe }}
     {% else %}
         {{ entry.teaser_html|safe }}

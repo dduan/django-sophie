@@ -8,7 +8,9 @@
 </head>
 <body class="{% block pagetype %}{% endblock pagetype %}">
     <div id="header"> 
-        <h1 id="blog-title">{{ blog.title }}</h1>
+        <h1 id="blog-title">
+            <a href="{{blog.get_absolute_url}}">{{ blog.title }}</a>
+        </h1>
         <span "blog-descripition">{{ blog.description }}</span>
         {% block header_extra %}{% endblock header_extra %} 
     </div>

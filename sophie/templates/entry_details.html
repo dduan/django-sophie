@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+{{ entry.title }}-{{ blog.title }}
+{% endblock title %}
+
 {% block navi %}
 {% include 'sidebar.html' %}
 {% endblock navi %}

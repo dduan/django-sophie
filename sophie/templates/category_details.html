@@ -18,5 +18,7 @@
         {{ entry.teaser_html|safe }}
     {% endif %}
     </div>
+{% empty %}
+    Ooops, there's nothing here yet, too bad.
 {% endfor %}
 {% endblock main %}

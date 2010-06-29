@@ -1,7 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
 from sophie.utils import get_blog
-from sophie.models import Entry
+from sophie.models import Entry, Category
 
 class BaseFeed(Feed):
     ''' 

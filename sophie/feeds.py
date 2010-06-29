@@ -54,8 +54,8 @@ class CategoryFeed(BaseFeed):
     '''
 
     def get_object(self, request, blog_slug=None, category_slug=None):
-        return get_object_or_404(Category.objects.get(blog=blog_slug, 
-            slug=category_slug))
+        blog = get_blog(blog_slug)
+        return get_object_or_404(Category, blog=blog, slug=category_slug)
 
     def items(self, obj):
         return Entry.live.filter( category=obj )[:obj.blog.feed_length]

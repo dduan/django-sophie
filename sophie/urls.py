@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+
 from sophie.models import Blog
 from sophie.sitemaps import BlogSitemap
 from sophie.feeds import BlogFeed, CategoryFeed

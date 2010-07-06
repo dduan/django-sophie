@@ -1,6 +1,7 @@
-from django.contrib.syndication import Feed
+from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
 from sophie.utils import get_blog
+from sophie.models import Entry, Category
 
 class BaseFeed(Feed):
     ''' 
@@ -15,7 +16,7 @@ class BaseFeed(Feed):
     def title(self, obj):
         return obj.title
 
-    def description(self. obj):
+    def description(self, obj):
         return obj.description
     
     def link(self, obj):
@@ -52,8 +53,9 @@ class CategoryFeed(BaseFeed):
     Feed for a Category.
     '''
 
-    def get_object(self, request, category_slug=None):
-        return get_object_or_404(Category.objects.get(slug=category_slug))
+    def get_object(self, request, blog_slug=None, category_slug=None):
+        blog = get_blog(blog_slug)
+        return get_object_or_404(Category, blog=blog, slug=category_slug)
 
     def items(self, obj):
         return Entry.live.filter( category=obj )[:obj.blog.feed_length]

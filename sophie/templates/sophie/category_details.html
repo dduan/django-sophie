@@ -1,0 +1,36 @@
+{% extends 'sophie/base.html' %}
+
+{% block title %}
+{{ category.title }} - {{ blog.title }}
+{% endblock title %}
+
+{% block navi %}
+{% include 'sophie/sidebar.html' %}
+{% endblock navi %}
+
+{% block main %}
+<div id="page-description">
+    The content of this page is under {{ category.title }}.
+</div>
+
+{% for entry in page.object_list %}
+    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+    <div class="entry-meta-info">
+        Published @
+        <span class="entry-pub-time">
+            {{ entry.pub_date|date:"DATETIME_FORMAT" }}
+        </span>
+        by
+        <span class="entry-author">{{ entry.author.get_full_name}}</span>
+    </div>
+    <div class="entry-body">
+    {% if blog.full_entry_in_page %}
+        {{ entry.body_html|safe }}
+    {% else %}
+        {{ entry.teaser_html|safe }}
+    {% endif %}
+    </div>
+{% empty %}
+    But, there's nothing here yet, too bad.
+{% endfor %}
+{% endblock main %}

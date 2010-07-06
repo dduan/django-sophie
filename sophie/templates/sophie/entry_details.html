@@ -1,0 +1,22 @@
+{% extends 'sophie/base.html' %}
+
+{% block title %}
+{{ entry.title }} - {{ blog.title }}
+{% endblock title %}
+
+{% block navi %}
+{% include 'sophie/sidebar.html' %}
+{% endblock navi %}
+
+{% block main %}
+<h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+<div class="entry-meta-info">
+    Published @
+    <span class="entry-pub-time">
+        {{ entry.pub_date|date:"DATETIME_FORMAT" }}
+    </span>
+    by
+    <span class="entry-author">{{ entry.author.get_full_name}}</span>
+</div>
+<div class="entry-body">{{ entry.body_html|safe }}</div>
+{% endblock main %}

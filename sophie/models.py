@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from managers import LiveEntryManager
+from managers import LiveEntryManager, ShownCategoryManager
 import datetime
 
 class Blog(models.Model):
@@ -20,16 +20,25 @@ class Blog(models.Model):
         return self.title
 
     @models.permalink
-    def get_aboslute_url(self):
+    def get_absolute_url(self):
         return ('index_view', (), { 'blog_slug': self.slug })
+
+    def get_categories(self):
+        return Category.visible.filter(blog=self)
+    
+    def get_entries(self):
+        return Entry.live.filter(blog=self)
 
 class Category(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(blank = True)
     slug = models.SlugField(unique = True)
     blog = models.ForeignKey(Blog)
-    count = models.IntegerField(default = 0, editable = False)
+    count = models.IntegerField(default = 0)
     shown = models.BooleanField(default = True)
+
+    objects = models.Manager()
+    visible = ShownCategoryManager()
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -39,7 +48,12 @@ class Category(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('category_view', (), { 'category_slug': self.slug })
+        return ('category_view', (), { 
+            'blog_slug': self.blog.slug,
+            'category_slug': self.slug })
+
+    def get_entries(self):
+        return Entry.live.filter(category=self)
 
 class Entry(models.Model):
     
@@ -87,7 +101,9 @@ class Entry(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('post_view', (), { 'page_slug': self.slug })
+        return ('entry_view', (), { 
+            'blog_slug' : self.blog.slug,
+            'entry_slug': self.slug })
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 
@@ -118,13 +134,13 @@ class Entry(models.Model):
         And finally apply the markup
         """
 
-        if self.markup == MARKDOWN_SYNTAX:
+        if self.markup == self.MARKDOWN_SYNTAX:
             from functools import partial
             import markdown
 
             # warning, here's a conditional operator hack
             do_markup = partial(markdown.markdown, 
-                    extensions = self.highlight_code and ['codehilite'] or [])
+                    extensions = self.blog.highlight_code and ['codehilite'] or [])
         else: # default to HTML_SYNTAX, do nothing
             do_markup = lambda x: x
         

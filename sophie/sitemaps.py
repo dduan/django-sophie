@@ -8,11 +8,11 @@ class BlogSitemap(Sitemap):
 
     def __init__(self, blog):
         " here blog is a Sophie.Blog instance "
-        this.blog = blog
+        self.blog = blog
         super(BlogSitemap, self).__init__()
 
     def items(self):
         return Entry.live.filter( blog = self.blog )
 
     def lastmod(self, obj):
-        return obj.last_updated
+        return obj.last_update

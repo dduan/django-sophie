@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print">	
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+    
+</head>
+<body class="{% block pagetype %}{% endblock pagetype %}">
+    <div class="container">
+
+        <div class="span-24 last" id="header"> 
+            <h1 id="blog-title">
+                <a href="{{blog.get_absolute_url}}">{{ blog.title }}</a>
+            </h1>
+            <span "blog-descripition">{{ blog.description }}</span>
+            {% block header_extra %}{% endblock header_extra %} 
+        </div>
+
+        <div class="span-18" id="main-wrapper">
+            {% block main %}{% endblock main %} 
+        </div>
+
+        <div class="span-6 last" id="navi-wrapper">
+            {% block navi %}{% endblock navi %}
+        </div>
+
+
+        <div class="span-24 last" id="footer"> 
+            {% block footer_extra %}{% endblock footer_extra %} 
+        </div>
+
+    </div>
+</body>
+</html>

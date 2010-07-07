@@ -18,3 +18,5 @@ django-sophie future 1.0 Features
     and potentially other markup languages.
 *   Export blog content to some XML format
 *   Creating pages
+*   Be independent of templates, aka have templatetags instead of raw template
+*   Link roll

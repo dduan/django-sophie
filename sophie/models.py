@@ -9,6 +9,7 @@ class Blog(models.Model):
     slug = models.SlugField()
     entry_per_page = models.PositiveIntegerField(default = 5)
     feed_length = models.PositiveIntegerField(default = 15)
+    feed_service = models.CharField(max_length=200, blank=True)
     highlight_code = models.BooleanField(default = True)
     full_entry_in_page = models.BooleanField(default = True)
     full_entry_in_feed = models.BooleanField(default = True)

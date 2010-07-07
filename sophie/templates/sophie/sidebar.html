@@ -1,4 +1,14 @@
-<div><a href="{% url blog_feed blog_slug=blog.slug %}"><h3>Feed</h3></a></div>
+<div>
+    <a href="
+        {% if blog.feed_service %}
+            {{ blog.feed_service}}
+        {% else %}
+            {% url blog_feed blog_slug=blog.slug %}
+        {% endif %}
+    ">
+        <h3>Feed</h3>
+    </a>
+</div>
 <h3>Category</h3>
 <ul>
     {% for category in blog.get_categories %}

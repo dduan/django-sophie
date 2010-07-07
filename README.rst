@@ -7,7 +7,7 @@ database backends.
 Documentation lives under ``docs``.  To get a html/pdf version, run 
 ``make html`` or ``make pdf`` under that directory.
 
-Installation instruction is found in ``docs/install.rst``.
+Installation instruction is found in ``docs/install.txt``.
 
 For in-development version of source code, or bug report, visit:
 http://github.com/DaNmarner/django-sophie/

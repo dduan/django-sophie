@@ -1,5 +1,5 @@
-django-sophie
-=============
+Introduction to Sophie
+======================
 
 Sophie is just another django-based blog engine, that could run on
 a bit more database backend, if any, than the rest.
@@ -28,4 +28,4 @@ the need of the author to study the Django framework. In other words,
 This is a *boring* Django-based project that does nothing more than
 simply applying plain Django knowledge found in the official docs as
 well as a couple of related books. Feel free to checkout the code and
-help out, but expect no technical innovation :).
+help out, but expect no surprises.

@@ -1,0 +1,22 @@
+This is a list of features planned for a potential 1.0 release of Sophie.
+
+django-sophie future 1.0 Features
+=================================
+
+*   Blog Posting
+*   Category
+*   Feed
+*   Comments
+*   Code highlighting
+*   Pingback
+*   Tagging
+*   Sitemap
+*   Wordpress import
+*   Blogger import
+*   Mobile friendly UI
+*   Editing in markdown, reStructuredText 
+    and potentially other markup languages.
+*   Export blog content to some XML format
+*   Creating pages
+*   Be independent of templates, aka have templatetags instead of raw template
+*   Link roll

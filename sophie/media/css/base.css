@@ -5,3 +5,18 @@
 #main-wrapper {
     margin: 20px 0 20px 0;
 }
+
+.entry-meta-info {
+    color: #cccccc;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: red;
+}
+

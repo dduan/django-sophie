@@ -1,8 +1,7 @@
 django-sophie
 =============
 
-just another django-based blog engine, that may run on a little more kinds of 
-database backends.
+just another django-based blog engine, that may run on more database backends.
 
 Documentation lives under ``docs``.  To get a html/pdf version, run 
 ``make html`` or ``make pdf`` under that directory.

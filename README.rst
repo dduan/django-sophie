@@ -16,4 +16,4 @@ For demos, checkout these sites:
 *   http://sophie.danmarner.com/ (English)
 *   http://blog.danmarner.com/ (Simplified Chinese)
 
-This program is released under BSD liscense, see ``LISCENSE.txt`` for detail.
+This program is released under BSD license, see ``LICENSE.txt`` for detail.

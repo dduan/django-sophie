@@ -1,11 +1,5 @@
 <div>
-    <a href="
-        {% if blog.feed_service %}
-            {{ blog.feed_service}}
-        {% else %}
-            {% url blog_feed blog_slug=blog.slug %}
-        {% endif %}
-    ">
+    <a href="{{ blog.get_feed }} ">
         <h3>Feed</h3>
     </a>
 </div>

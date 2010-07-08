@@ -24,6 +24,16 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return ('index_view', (), { 'blog_slug': self.slug })
 
+    @models.permalink
+    def get_original_feed(self):
+        return ('blog_feed', (), {'blog_slug': self.slug})
+
+    def get_feed(self):
+        if self.feed_service:
+            return self.feed_service
+        else:
+            return self.get_original_feed()
+
     def get_categories(self):
         return Category.visible.filter(blog=self)
     

@@ -3,6 +3,13 @@ Release Notes
 
 Changes, improvements, new features and new issues.
 
+v0.0.2 (in development)
+-----------------------
+
+**New Features:**
+
+*   Use feed url provided by feed service instead of original url
+
 v0.0.1
 ------
 

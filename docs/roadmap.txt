@@ -22,3 +22,4 @@ This is a list of features planned for a potential 1.0 release of Sophie.
 *   Links
 *   Tests
 *   Documentation
+*   Update Pinging to service like Feedburner, etc.

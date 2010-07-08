@@ -37,6 +37,9 @@ class BaseFeed(Feed):
     def item_author_name(self, item):
         return item.author.get_full_name()
 
+    def item_pubdate(self, item):
+        return item.pub_date
+
 class BlogFeed(BaseFeed):
     '''
     Feed for a Blog.

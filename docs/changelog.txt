@@ -1,0 +1,26 @@
+Release Notes
+=============
+
+Changes, improvements, new features and new issues.
+
+v0.0.1
+------
+
+IPO.
+
+User number: 1.
+
+**New Features:**
+
+*   Writing entries with bare HTML or Markdown
+*   Source code syntax highlight if the entry is written in Markdown
+*   Turn on/off the syntax highlighting
+*   Categories
+*   Set number of entries to be displayed in a page
+*   Multiple blog
+*   Feed for each blog
+*   Feed for each category
+*   Choose whether or not display full entry in entry lists page
+*   Choose whether or not display full entry in entry lists feed
+*   Set entry status to live, hidden or draft
+*   Set if a category is to be shown

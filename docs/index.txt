@@ -12,7 +12,8 @@ Contents:
    :maxdepth: 2
 
    Introduction <intro>
-   Development Roadmap <roadmap>
+   Release Notes <changelog>
+   Roadmap <roadmap>
 
 Indices and tables
 ==================

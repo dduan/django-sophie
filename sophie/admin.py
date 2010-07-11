@@ -24,14 +24,30 @@ def make_entry_draft_action(modeladmin, request, queryset):
 make_entry_draft_action.short_description = "Make Selected Entries Drafts"
 
 class EntryAdmin(admin.ModelAdmin):
+
     save_on_top = True
+
     actions = (
             delete_selected_action,
             make_entry_live_action,
             make_entry_hidden_action,
             make_entry_draft_action,
             )
-    prepopulated_fields = {'slug': ('title',)}
+
+    prepopulated_fields = { 'slug': ('title',) }
+
+    radio_fields = { 'status': admin.HORIZONTAL }
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('title', 'slug'),  
+                'body', 
+                'teaser',
+                ('status', 'markup'),
+                ('category', 'pub_date'),
+            ) 
+        }),
+    )
 
     def get_actions(self, request):
         actions = super(EntryAdmin, self).get_actions(request)

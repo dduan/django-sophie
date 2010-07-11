@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from managers import LiveEntryManager, ShownCategoryManager
+from managers import LiveEntryManager, ShownCategoryManager, BlogCategoryManager
 import datetime
 
 class Blog(models.Model):
@@ -87,16 +87,18 @@ class Entry(models.Model):
     category = models.ForeignKey(Category)
     blog = models.ForeignKey(Blog, editable = False)
     slug = models.SlugField(unique = True, max_length = 250)
-    title = models.CharField(max_length = 250)
+    title = models.CharField(max_length = 250,
+            help_text = 'No longer than 250 characters'
+            )
     pub_date = models.DateTimeField(default = datetime.datetime.now)
     last_update = models.DateTimeField(editable = False)
     markup = models.PositiveIntegerField(default = MARKDOWN_SYNTAX, 
             choices = MARKUP_CHOICES)
     body = models.TextField(blank = True)
     body_html = models.TextField(blank = True, editable = False)
-    teaser = models.TextField(blank = True)
+    teaser = models.TextField(help_text = 'Optional', blank = True)
     teaser_html = models.TextField(blank = True, editable = False)
-    status = models.PositiveIntegerField(default = DRAFT_STATUS,
+    status = models.PositiveIntegerField(default = LIVE_STATUS,
             choices = STATUS_CHOICES)
     author = models.ForeignKey(User)
 

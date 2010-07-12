@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/base.css" type="text/css" />
 
-    
+    {% block pre_body %}{% endblock pre_body %}    
 </head>
 
 {% if blog.g_analytics_tracking_id %}

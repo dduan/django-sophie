@@ -42,7 +42,7 @@
     </div>
     {% endif %}
     {% if page.has_other_pages %}
-    This is page {{ page.number }} of {{ page.paginator.count }}
+    This is page {{ page.number }} of {{ page.paginator.num_pages }}
     {% endif %}
 </div>
 {% endblock main%}

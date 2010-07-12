@@ -13,7 +13,7 @@ class Blog(models.Model):
     highlight_code = models.BooleanField(default = True)
     full_entry_in_page = models.BooleanField(default = True)
     full_entry_in_feed = models.BooleanField(default = True)
-    g_analytics_tracking_id = models.CharField(max_length=50)
+    g_analytics_tracking_id = models.CharField(max_length=50, blank=True)
 
     class Meta:
         ordering = ['id']

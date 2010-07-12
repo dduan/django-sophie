@@ -14,6 +14,7 @@ class Blog(models.Model):
     full_entry_in_page = models.BooleanField(default = True)
     full_entry_in_feed = models.BooleanField(default = True)
     g_analytics_tracking_id = models.CharField(max_length=50, blank=True)
+    disqus_shortname = models.CharField(max_length=200, blank=True)
 
     class Meta:
         ordering = ['id']

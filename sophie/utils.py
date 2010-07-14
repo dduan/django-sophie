@@ -2,20 +2,14 @@
 Utilities for django-sophie
 '''
 
-from models import Blog
-from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.conf import settings
 
-def get_blog(slug):
-    ''' 
-    gets the blog entity identified by slug. 
-    if slug isn't given, give the instance with minimal id.
-    404 if not found.
-    '''
-    if slug == None:
-        return Blog.objects.all()[0]
-    else:
-        return get_object_or_404(Blog, slug=slug)
+# set multiblog_enabled = True to enable multi blog url routing
+if hasattr(settings, 'SOPHIE_ENABLES_MULTIBLOG'):
+    multiblog_enabled =  settings.SOPHIE_ENABLES_MULTIBLOG
+else:
+    multiblog_enabled = False
 
 class LaidbackPaginator(Paginator):
     '''

@@ -24,6 +24,6 @@ and "blog2", their front pages' url would become `root/to/blog/blog1/` and
 `root/to/blog/blog1/entries/1/` and `root/to/blog/blog2/entries/1/`.
 
 The multi-blog feature is disabled by default. To enable it set
-`SOPHIE_MULTIPLE_BLOG` to `True` in project's `settings.py` file.
+`SOPHIE_ENABLES_MULTIBLOG` to `True` in project's `settings.py` file.
 
 # TODO: instruction and explanation for having to set blog slugs

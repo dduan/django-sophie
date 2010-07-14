@@ -3,9 +3,13 @@ from django.conf.urls.defaults import *
 from sophie.models import Blog
 from sophie.sitemaps import BlogSitemap
 from sophie.feeds import BlogFeed, CategoryFeed
+from sophie.models import multiblog_enabled
 
 # To save some typing later...
-blog_bit = r'(?:(?P<blog_slug>[\w-]+)/)?'
+if multiblog_enabled:
+    blog_bit = r'(?:(?P<blog_slug>[\w-]+)/)?'
+else:
+    blog_bit = ''
 page_bit = r'(?:(?P<page_num>\d+)/)?'
 slug_bit = r'(?P<%s_slug>[\w-]+)'
 
@@ -26,12 +30,18 @@ blogs = Blog.objects.all()
 for blog in blogs:
     sitemaps[blog.slug] = BlogSitemap(blog)
 
-urlpatterns += patterns('',
-    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.index', 
-        { 'sitemaps': sitemaps } ),
-    (r'(?P<section>.+)/sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
-        { 'sitemaps': sitemaps } ),
-)
+if multiblog_enabled:
+    urlpatterns += patterns('',
+        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.index', 
+            { 'sitemaps': sitemaps } ),
+        (r'(?P<section>.+)/sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+            { 'sitemaps': sitemaps } ),
+    )
+else:
+    urlpatterns += patterns('',
+        (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', 
+            { 'sitemaps': sitemaps } ),
+    )
 
 # Page url
 

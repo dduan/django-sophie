@@ -31,18 +31,31 @@
 </div>
 
 <div id="pagination">
-    {% if page.has_previous %}
-    <div id="previous-page-link">
-        <a href="{% url entry_list_view blog_slug=blog.slug page_num=page.previous_page_number %}">newer posts</a>
-    </div>
+    {% if multiblog %}
+        {% if page.has_previous %}
+        <div id="previous-page-link">
+            <a href="{% url entry_list_view blog_slug=blog.slug page_num=page.previous_page_number %}">newer posts</a>
+        </div>
+        {% endif %}
+        {% if page.has_next %}
+        <div id="next-page-link">
+        <a href="{% url entry_list_view blog_slug=blog.slug page_num=page.next_page_number %}">older posts</a>
+        </div>
+        {% endif %}
+    {% else %}
+        {% if page.has_previous %}
+        <div id="previous-page-link">
+            <a href="{% url entry_list_view page_num=page.previous_page_number %}">newer posts</a>
+        </div>
+        {% endif %}
+        {% if page.has_next %}
+        <div id="next-page-link">
+        <a href="{% url entry_list_view page_num=page.next_page_number %}">older posts</a>
+        </div>
+        {% endif %}
     {% endif %}
-    {% if page.has_next %}
-    <div id="next-page-link">
-    <a href="{% url entry_list_view blog_slug=blog.slug page_num=page.next_page_number %}">older posts</a>
-    </div>
-    {% endif %}
-    {% if page.has_other_pages %}
-    This is page {{ page.number }} of {{ page.paginator.num_pages }}
-    {% endif %}
+        {% if page.has_other_pages %}
+        This is page {{ page.number }} of {{ page.paginator.num_pages }}
+        {% endif %}
 </div>
 {% endblock main%}

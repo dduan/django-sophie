@@ -1,9 +1,8 @@
-from django.conf import settings
 from django.template import RequestContext
 
 from django.shortcuts import render_to_response, get_object_or_404
 from sophie.models import Blog, Category, Entry
-from sophie.utils import LaidbackPaginator
+from sophie.utils import LaidbackPaginator, multiblog_enabled
 
 
 def list_entries(request, 
@@ -17,6 +16,7 @@ def list_entries(request,
         { 
             'blog': blog,
             'page': pages.page(page_num),
+            'multiblog': multiblog_enabled,
         },
         RequestContext(request)
     )
@@ -40,6 +40,7 @@ def show_category(request,
             'blog': blog,
             'category': category,
             'page': pages.page(page_num),
+            'multiblog': multiblog_enabled,
         },
         RequestContext(request)
     )
@@ -54,6 +55,7 @@ def show_entry(request,
         { 
             'blog': blog,
             'entry': entry,
+            'multiblog': multiblog_enabled,
         },
         RequestContext(request)
     )

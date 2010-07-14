@@ -1,0 +1,34 @@
+Sophie Configurations
+=====================
+
+Single vs Multiple Blog Mode
+----------------------------
+
+By default, each Sophie instance runs only one blog, which uses whatever root
+url Sophie is plugged into. That is, assuming the url for Sophie is routed as::
+
+    urlpatterns = patterns('',
+        # ...
+        (r'^root/to/blog/', include('sophie.urls'),
+        # ...
+    )
+
+the url for the blog's front page would be `root/to/blog/`, for the first page
+of the entry list would be `root/to/blog/entries/1/`, etc.
+
+However, Sophie does support running multiple blogs with a single instance
+under the same root url. In this case, each blog will have an identifier, or
+rather, an "slug". With the same setup as above, for blogs with slug "blog1"
+and "blog2", their front pages' url would become `root/to/blog/blog1/` and 
+`root/to/blog/blog2`, and the first pages of entry list would be
+`root/to/blog/blog1/entries/1/` and `root/to/blog/blog2/entries/1/`.
+
+The multi-blog feature is disabled by default. To enable it set
+`SOPHIE_ENABLES_MULTIBLOG` to `True` in project's `settings.py` file.
+
+Although the blog slug is hardly used in single blog mode, your blog still 
+has a slug, which is `default`. Feel free to change it to anything you want.
+But keep in mind that in Multiple blog mode, the slugs aren't optional anymore.
+And more importantly, as explained above, they become part of the url. So make
+sure they are carefully picked and make the most sense. Of course they can be
+modified in the admin backends.

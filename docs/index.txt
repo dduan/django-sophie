@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    Introduction <intro>
+   Configuring Sophie <configuration>
    Release Notes <changelog>
    Roadmap <roadmap>
 

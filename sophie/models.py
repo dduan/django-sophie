@@ -132,6 +132,7 @@ class Entry(models.Model):
     status = models.PositiveIntegerField(default = DRAFT_STATUS,
             choices = STATUS_CHOICES)
     author = models.ForeignKey(User)
+    allow_comment = models.BooleanField(default = True)
 
     objects = models.Manager()
     live = LiveEntryManager()

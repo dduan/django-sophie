@@ -94,7 +94,7 @@ class Category(models.Model):
             }
         if multiblog_enabled:
             c.update({'blog_slug': self.blog.slug})
-        return ('category_view', (), )
+        return ('category_view', (), c)
 
     def get_entries(self):
         return Entry.live.filter(category=self)

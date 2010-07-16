@@ -63,6 +63,9 @@ class EntryAdmin(admin.ModelAdmin):
         'pub_date'
     )
 
+    list_editable = ('status',)
+    list_filter = ('status', 'blog')
+
     def display_category(self, obj):
         return obj.category.title
     display_category.short_description = "Category"
@@ -80,7 +83,15 @@ class CategoryAdmin(admin.ModelAdmin):
     save_on_top = True
     readonly_fields = ('entry_count',)
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title','description','entry_count', 'display_blog')
+    list_display = (
+        'title',
+        'description',
+        'entry_count', 
+        'display_blog', 
+        'shown'
+    )
+    list_filter = ('blog', 'shown')
+    list_editable = ('shown', )
     def display_blog(self, obj):
         return obj.blog.title
     display_blog.short_description = "Blog"

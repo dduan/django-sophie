@@ -38,15 +38,20 @@ class EntryAdmin(admin.ModelAdmin):
 
     radio_fields = { 'status': admin.HORIZONTAL }
     fieldsets = (
-        (None, {
+        ('Entry Content', {
             'fields': (
+                ('category', 'author', 'markup'),
                 ('title', 'slug'),  
                 'body', 
                 'teaser',
-                ('status', 'allow_comment'),
-                ('category','markup'),
                 'pub_date',
             ) 
+        }),
+        ('Entry Settings', {
+            'fields': ( 
+                'status',
+                'allow_comment',
+            ),
         }),
     )
 

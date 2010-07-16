@@ -43,8 +43,9 @@ class EntryAdmin(admin.ModelAdmin):
                 ('title', 'slug'),  
                 'body', 
                 'teaser',
-                ('status', 'markup'),
-                ('category', 'pub_date'),
+                ('status', 'allow_comment'),
+                ('category','markup'),
+                'pub_date',
             ) 
         }),
     )
@@ -60,6 +61,37 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 class BlogAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Basic Infomation', {
+            'fields': (
+                ('title', 'slug'),
+                'description',
+            ),
+        }),
+        ('Entry Settings', {
+            'fields': (
+                'full_entry_in_page',
+                'highlight_code',
+                'page_length',
+            ),
+            'classes': ('collapse',)
+        }),
+        ('Feed Settings', {
+            'fields': (
+                'full_entry_in_feed',
+                'feed_length', 
+                'feed_service'
+            ),
+            'classes': ('collapse',)
+        }),
+        ('Services', {
+            'fields': (
+                'g_analytics_tracking_id',
+                'disqus_shortname',
+            ),
+            'classes': ('collapse',)
+        }),
+    )
     prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Entry, EntryAdmin)

@@ -12,7 +12,7 @@ class Blog(models.Model):
     title = models.CharField(max_length = 200)
     description = models.TextField(blank = True)
     slug = models.SlugField()
-    entry_per_page = models.PositiveIntegerField(default = 5)
+    page_length = models.PositiveIntegerField(default = 5)
     feed_length = models.PositiveIntegerField(default = 15)
     feed_service = models.CharField(max_length=200, blank=True)
     highlight_code = models.BooleanField(default = True)

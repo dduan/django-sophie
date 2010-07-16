@@ -11,7 +11,7 @@ def list_entries(request,
         template='sophie/entry_list.html'):
     ''' renders requested page, a list of date-ordred entries '''
     blog = Blog.get_blog(blog_slug)
-    pages = LaidbackPaginator(blog.get_entries(), blog.entry_per_page)
+    pages = LaidbackPaginator(blog.get_entries(), blog.page_length)
     return render_to_response(template, 
         { 
             'blog': blog,
@@ -34,7 +34,7 @@ def show_category(request,
     blog = Blog.get_blog(blog_slug)
     category = get_object_or_404(Category, blog=blog, slug=category_slug)
     entries = Entry.live.filter( category=category )
-    pages = LaidbackPaginator(entries, blog.entry_per_page)
+    pages = LaidbackPaginator(entries, blog.page_length)
     return render_to_response(template, 
         { 
             'blog': blog,

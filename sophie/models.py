@@ -29,18 +29,16 @@ class Blog(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
+        c = {}
         if multiblog_enabled:
-            c = { 'blog_slug': self.slug }
-        else:
-            c = {}
+            c.update({ 'blog_slug': self.slug })
         return ('index_view', (), c)
 
     @models.permalink
     def get_original_feed(self):
+        c = {}
         if multiblog_enabled:
-            c = { 'blog_slug': self.slug }
-        else:
-            c = {}
+            c.update({ 'blog_slug': self.slug })
         return ('blog_feed', (), c)
 
     def get_feed(self):
@@ -91,9 +89,12 @@ class Category(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('category_view', (), { 
-            'blog_slug': self.blog.slug,
-            'category_slug': self.slug })
+        c = { 
+                'category_slug': self.slug
+            }
+        if multiblog_enabled:
+            c.update({'blog_slug': self.blog.slug})
+        return ('category_view', (), c)
 
     def get_entries(self):
         return Entry.live.filter(category=self)
@@ -133,6 +134,7 @@ class Entry(models.Model):
     status = models.PositiveIntegerField(default = LIVE_STATUS,
             choices = STATUS_CHOICES)
     author = models.ForeignKey(User)
+    allow_comment = models.BooleanField(default = True)
 
     objects = models.Manager()
     live = LiveEntryManager()
@@ -146,15 +148,17 @@ class Entry(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('entry_view', (), { 
-            'blog_slug' : self.blog.slug,
-            'entry_slug': self.slug })
+        c = { 
+                'entry_slug': self.slug
+            }
+        if multiblog_enabled:
+            c.update({'blog_slug': self.blog.slug})
+        return ('entry_view', (), c)
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 
 
         if not self.id: # newly created
-            self.pub_date = datetime.datetime.now()
             self.category.count = self.category.count + 1
             self.category.save()
 

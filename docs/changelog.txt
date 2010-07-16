@@ -8,6 +8,9 @@ v0.0.2 (in development)
 
 **New Features:**
 
+*   Set a futrue publish time to publish an entry in the future
+*   Single Blog Mode. See configuration.txt
+*   Optional google analytic track code per blog
 *   Use feed url provided by feed service instead of original url
 
 v0.0.1

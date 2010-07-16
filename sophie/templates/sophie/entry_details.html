@@ -33,7 +33,7 @@ var disqus_shortname = '{{ blog.disqus_shortname }}';
 </div>
 <div class="entry-body">{{ entry.body_html|safe }}</div>
 
-{% if blog.disqus_shortname %}
+{% if entry.allow_comment and blog.disqus_shortname %}
 <hr />
 <div id="disqus_thread"></div>
 <script type="text/javascript">

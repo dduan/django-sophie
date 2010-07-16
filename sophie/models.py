@@ -75,7 +75,7 @@ class Category(models.Model):
     description = models.TextField(blank = True)
     slug = models.SlugField(unique = True)
     blog = models.ForeignKey(Blog)
-    count = models.IntegerField(default = 0)
+    entry_count = models.IntegerField(default = 0)
     shown = models.BooleanField(default = True)
 
     objects = models.Manager()
@@ -159,7 +159,7 @@ class Entry(models.Model):
         """ convert markup to html, book-keep category counter """ 
 
         if not self.id: # newly created
-            self.category.count = self.category.count + 1
+            self.category.entry_count = self.category.entry_count + 1
             self.category.save()
 
         self.last_update = datetime.datetime.now()
@@ -171,7 +171,7 @@ class Entry(models.Model):
     def delete(self, *args, **kwargs):
         """ counter-method of self.save, book-keeping category counter """
 
-        self.category.count = self.category.count - 1
+        self.category.entry_count = self.category.entry_count - 1
         self.category.save()
 
         super(Entry, self).delete(*args, **kwargs)

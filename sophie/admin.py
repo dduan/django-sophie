@@ -55,6 +55,22 @@ class EntryAdmin(admin.ModelAdmin):
         }),
     )
 
+    list_display = (
+        'title', 
+        'display_category', 
+        'display_author', 
+        'status', 
+        'pub_date'
+    )
+
+    def display_category(self, obj):
+        return obj.category.title
+    display_category.short_description = "Category"
+
+    def display_author(self, obj):
+        return obj.author.get_full_name()
+    display_author.short_description = "Author"
+
     def get_actions(self, request):
         actions = super(EntryAdmin, self).get_actions(request)
         del actions['delete_selected']
@@ -62,8 +78,12 @@ class EntryAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     save_on_top = True
-    readonly_fields = ('count',)
+    readonly_fields = ('entry_count',)
     prepopulated_fields = {'slug': ('title',)}
+    list_display = ('title','description','entry_count', 'display_blog')
+    def display_blog(self, obj):
+        return obj.blog.title
+    display_blog.short_description = "Blog"
 
 class BlogAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -98,6 +118,7 @@ class BlogAdmin(admin.ModelAdmin):
         }),
     )
     prepopulated_fields = {'slug': ('title',)}
+    list_display = ('title', 'description')
 
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(Category, CategoryAdmin)

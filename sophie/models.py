@@ -157,7 +157,6 @@ class Entry(models.Model):
         """ convert markup to html, book-keep category counter """ 
 
         if not self.id: # newly created
-            self.pub_date = datetime.datetime.now()
             self.category.count = self.category.count + 1
             self.category.save()
 

@@ -6,10 +6,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.conf import settings
 
 # set multiblog_enabled = True to enable multi blog url routing
-if hasattr(settings, 'SOPHIE_ENABLES_MULTIBLOG'):
-    multiblog_enabled =  settings.SOPHIE_ENABLES_MULTIBLOG
-else:
-    multiblog_enabled = False
+multiblog_enabled = getattr(settings, 'SOPHIE_ENABLES_MULTIBLOG', False)
 
 class LaidbackPaginator(Paginator):
     '''

@@ -2,7 +2,7 @@
 
 {% block pre_body %}
 {% if blog.disqus_shortname %}
-    <meta name="description" content="{{ entry.teaser }}" />
+    <meta name="description" content="{{ entry.teaser|escape }}" />
     <script type="text/javascript">
     var disqus_shortname = '{{ blog.disqus_shortname }}';
     (function () {

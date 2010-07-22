@@ -4,6 +4,10 @@
 {{ blog.title }}: {{ blog.description }}
 {% endblock title %}
 
+{% block pre_body %}
+    <meta name="description" content="{{ blog.description }}" />
+{% endblock pre_body %}
+
 {% block navi %}
 {% include 'sophie/sidebar.html' %}
 {% endblock navi %}

@@ -3,6 +3,10 @@
 {% block title %}
 {{ category.title }} - {{ blog.title }}
 {% endblock title %}
+ 
+{% block pre_body %}
+    <meta name="description" content="{{ category.description }}" />
+{% endblock pre_body %}
 
 {% block navi %}
 {% include 'sophie/sidebar.html' %}

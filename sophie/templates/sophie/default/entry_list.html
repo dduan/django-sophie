@@ -1,4 +1,4 @@
-{% extends 'sophie/base.html' %}
+{% extends base_template %}
 
 {% block title %}
 {{ blog.title }}: {{ blog.description }}
@@ -9,7 +9,7 @@
 {% endblock pre_body %}
 
 {% block navi %}
-{% include 'sophie/sidebar.html' %}
+{% include sidebar_template %}
 {% endblock navi %}
 
 {% block main %}
@@ -22,9 +22,7 @@
             {{ entry.pub_date|date:"DATETIME_FORMAT" }}
         </span>
         by
-        <span class="entry-author">
-            {{ entry.author.get_full_name}}
-        </span>
+        <span class="entry-author"> {{ entry.author.get_full_name}} </span>
     </div>
     {% if blog.full_entry_in_page %}
         <div>{{ entry.body_html|safe }}</div>

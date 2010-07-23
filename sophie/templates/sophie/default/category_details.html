@@ -1,4 +1,4 @@
-{% extends 'sophie/base.html' %}
+{% extends base_template %}
 
 {% block title %}
 {{ category.title }} - {{ blog.title }}
@@ -9,7 +9,7 @@
 {% endblock pre_body %}
 
 {% block navi %}
-{% include 'sophie/sidebar.html' %}
+{% include sidebar_template%}
 {% endblock navi %}
 
 {% block main %}

@@ -1,4 +1,4 @@
-{% extends 'sophie/base.html' %}
+{% extends base_template %}
 
 {% block pre_body %}
 {% if blog.disqus_shortname %}
@@ -18,7 +18,7 @@ var disqus_shortname = '{{ blog.disqus_shortname }}';
 {% endblock title %}
 
 {% block navi %}
-{% include 'sophie/sidebar.html' %}
+{% include sidebar_template %}
 {% endblock navi %}
 
 {% block main %}

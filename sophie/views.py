@@ -33,7 +33,8 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
     pages = LaidbackPaginator(entries, blog.page_length)
     template, template_dir = route_template(
         'category_details', 
-        blog_slug=blog.slug
+        category.slug,
+        blog.slug
     )
     return HttpResponse(template.render(
         RequestContext(request, { 
@@ -51,7 +52,8 @@ def show_entry(request, entry_slug, blog_slug=None):
     entry = get_object_or_404(Entry, slug=entry_slug)
     template, template_dir = route_template(
         'entry_details', 
-        blog_slug=blog.slug
+        entry.slug,
+        blog.slug
     )
     return HttpResponse(template.render(
         RequestContext(request, {

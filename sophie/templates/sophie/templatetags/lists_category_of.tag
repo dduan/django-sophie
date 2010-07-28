@@ -1,7 +1,7 @@
 <div>
 <h3>Category</h3>
 <ul>
-    {% for category in blog.get_categories %}
+    {% for category in category_list %}
     <li>
     <a href="{{ category.get_absolute_url }}">
         {{ category.title }}

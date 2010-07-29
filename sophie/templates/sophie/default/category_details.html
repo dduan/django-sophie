@@ -1,4 +1,5 @@
 {% extends base_template %}
+{% load sophie_parts %}
 
 {% block title %}
 {{ category.title }} - {{ blog.title }}
@@ -9,7 +10,8 @@
 {% endblock pre_body %}
 
 {% block navi %}
-{% include sidebar_template%}
+{% sophie_shows_feed_of blog %}
+{% sophie_lists_category_of blog %}
 {% endblock navi %}
 
 {% block main %}
@@ -17,24 +19,11 @@
     The content of this page is under {{ category.title }}.
 </div>
 
-{% for entry in page.object_list %}
-    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
-    <div class="entry-meta-info">
-        Published @
-        <span class="entry-pub-time">
-            {{ entry.pub_date|date:"DATETIME_FORMAT" }}
-        </span>
-        by
-        <span class="entry-author">{{ entry.author.get_full_name}}</span>
-    </div>
-    <div class="entry-body">
-    {% if blog.full_entry_in_page %}
-        {{ entry.body_html|safe }}
-    {% else %}
-        {{ entry.teaser_html|safe }}
-    {% endif %}
-    </div>
-{% empty %}
-    But, there's nothing here yet, too bad.
-{% endfor %}
+<div id="entry_list">
+    {% sophie_lists_entries_in page.object_list blog "But, there's nothing here yet, too bad." %}
+</div>
+    
+<div id="pagination">
+    {% sophie_links_siblings_of page blog %}
+</div>
 {% endblock main %}

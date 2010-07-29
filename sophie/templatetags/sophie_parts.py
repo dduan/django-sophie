@@ -11,7 +11,7 @@ def sophie_lists_category_of(blog):
 
 @register.inclusion_tag('sophie/templatetags/shows_feed_of.tag')
 def sophie_shows_feed_of(blog):
-    return {}
+    return { 'blog': blog }
 
 @register.inclusion_tag('sophie/templatetags/links_siblings_of.tag')
 def sophie_links_siblings_of(page, blog):
@@ -32,3 +32,12 @@ def sophie_links_siblings_of(page, blog):
         'next_link': next_link,
         'page': page,
     }
+
+@register.inclusion_tag('sophie/templatetags/lists_entries_in.tag')
+def sophie_lists_entries_in(entries, blog, empty_msg = ''):
+    return {
+        'entries': entries,
+        'blog': blog,
+        'empty_msg': empty_msg,
+    }
+

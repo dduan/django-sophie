@@ -32,14 +32,14 @@ class Blog(models.Model):
         c = {}
         if multiblog_enabled:
             c.update({ 'blog_slug': self.slug })
-        return ('index_view', (), c)
+        return ('sophie_blog_index_url', (), c)
 
     @models.permalink
     def get_original_feed(self):
         c = {}
         if multiblog_enabled:
             c.update({ 'blog_slug': self.slug })
-        return ('blog_feed', (), c)
+        return ('sophie_blog_feed', (), c)
 
     def get_feed(self):
         if self.feed_service:
@@ -94,7 +94,7 @@ class Category(models.Model):
             }
         if multiblog_enabled:
             c.update({'blog_slug': self.blog.slug})
-        return ('category_details_view', (), c)
+        return ('sophie_category_details_url', (), c)
 
     def get_entries(self):
         return Entry.live.filter(category=self)
@@ -153,7 +153,7 @@ class Entry(models.Model):
             }
         if multiblog_enabled:
             c.update({'blog_slug': self.blog.slug})
-        return ('entry_details_view', (), c)
+        return ('sophie_entry_details_url', (), c)
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 

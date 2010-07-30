@@ -15,9 +15,9 @@ slug_bit = r'(?P<%s_slug>[\w-]+)'
 
 # Feed urls
 urlpatterns = patterns('',
-    url(r'^%sfeed/$' % (blog_bit), BlogFeed(), name='blog_feed'),
+    url(r'^%sfeed/$' % (blog_bit), BlogFeed(), name='sophie_blog_feed'),
     url(r'^%scategory/%s/feed/$' % (blog_bit, slug_bit % 'category'), 
-        CategoryFeed(), name='category_feed'
+        CategoryFeed(), name='sophie_category_feed'
     ),
 )
 
@@ -47,16 +47,16 @@ else:
 
 urlpatterns += patterns('sophie.views',
     url(r'^%sentries/%s$' % (blog_bit, page_bit), 'list_entries', 
-        name="entry_list_view"),
+        name="sophie_entry_list_url"),
     url(r'^%scategory/%s/%s$' %(blog_bit, slug_bit%'category', page_bit), 
-        'show_category', name='category_details_view'),
+        'show_category', name='sophie_category_details_url'),
     # Reserved for future use, held till 0.1.0
     #url(r'%stag/%s/%s$' % (blog_bit, slug_bit % 'tag', page_bit), 
-    #    'show_tag', name='tag_details_view'),
+    #    'show_tag', name='sophie_tag_details_url'),
     #url(r'^%sarchive/(?P<year>\d{4})/(?P<month>\d{1,2})/$'%(blog_bit,page_bit),
-    #    'show_archive', name='monthly_archive_details_view'),
+    #    'show_archive', name='sophie_monthly_details_url'),
     url(r'^%sentry/%s/$' % (blog_bit, slug_bit % 'entry'), 
-        'show_entry', name='entry_details_view'),
-    url(r'^%s$' % blog_bit, 'show_index', name='index_view'),
+        'show_entry', name='sophie_entry_details_url'),
+    url(r'^%s$' % blog_bit, 'show_index', name='sophie_blog_index_url'),
 )
 

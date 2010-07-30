@@ -1,3 +1,11 @@
+'''
+URLs are named following this convention:
+
+    sophie_[part name]_[page type]_url
+
+Where the page type is 'details', there shoudl be a '[part name]_slug' field.
+'''
+
 from django.conf.urls.defaults import *
 
 from sophie.models import Blog
@@ -15,9 +23,9 @@ slug_bit = r'(?P<%s_slug>[\w-]+)'
 
 # Feed urls
 urlpatterns = patterns('',
-    url(r'^%sfeed/$' % (blog_bit), BlogFeed(), name='sophie_blog_feed'),
+    url(r'^%sfeed/$' % (blog_bit), BlogFeed(), name='sophie_blog_feed_url'),
     url(r'^%scategory/%s/feed/$' % (blog_bit, slug_bit % 'category'), 
-        CategoryFeed(), name='sophie_category_feed'
+        CategoryFeed(), name='sophie_category_feed_url'
     ),
 )
 

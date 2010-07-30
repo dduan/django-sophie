@@ -94,7 +94,7 @@ class Category(models.Model):
             }
         if multiblog_enabled:
             c.update({'blog_slug': self.blog.slug})
-        return ('category_view', (), c)
+        return ('category_details_view', (), c)
 
     def get_entries(self):
         return Entry.live.filter(category=self)
@@ -153,7 +153,7 @@ class Entry(models.Model):
             }
         if multiblog_enabled:
             c.update({'blog_slug': self.blog.slug})
-        return ('entry_view', (), c)
+        return ('entry_details_view', (), c)
 
     def save(self, *args, **kwargs):
         """ convert markup to html, book-keep category counter """ 

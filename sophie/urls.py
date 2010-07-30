@@ -49,14 +49,14 @@ urlpatterns += patterns('sophie.views',
     url(r'^%sentries/%s$' % (blog_bit, page_bit), 'list_entries', 
         name="entry_list_view"),
     url(r'^%scategory/%s/%s$' %(blog_bit, slug_bit%'category', page_bit), 
-        'show_category', name='category_view'),
+        'show_category', name='category_details_view'),
     # Reserved for future use, held till 0.1.0
     #url(r'%stag/%s/%s$' % (blog_bit, slug_bit % 'tag', page_bit), 
-    #    'show_tag', name='tag_view'),
+    #    'show_tag', name='tag_details_view'),
     #url(r'^%sarchive/(?P<year>\d{4})/(?P<month>\d{1,2})/$'%(blog_bit,page_bit),
-    #    'show_archive', name='monthly_archive_view'),
+    #    'show_archive', name='monthly_archive_details_view'),
     url(r'^%sentry/%s/$' % (blog_bit, slug_bit % 'entry'), 
-        'show_entry', name='entry_view'),
+        'show_entry', name='entry_details_view'),
     url(r'^%s$' % blog_bit, 'show_index', name='index_view'),
 )
 

@@ -20,8 +20,7 @@ def list_entries( request, blog_slug=None, page_num=1 ):
         'page': pages.page(page_num),
         'multiblog': multiblog_enabled,
     })
-    # sidebar here is rendered manually because {% include %} does not
-    # accept a compiled template as an argument.
+
     context['base_template'] = select_template( route('base') )
     return render_to_response( route('entry_list'), {}, context )
 
@@ -42,8 +41,7 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
         'page': pages.page(page_num),
         'multiblog': multiblog_enabled,
     }) 
-    # sidebar here is rendered manually because {% include %} does not
-    # accept a compiled template as an argument.
+
     context['base_template'] = select_template( route('base') )
     return render_to_response( route('category_details'), {}, context )
 
@@ -56,7 +54,6 @@ def show_entry(request, entry_slug, blog_slug=None):
         'entry': entry,
         'multiblog': multiblog_enabled,
     })
-    # sidebar here is rendered manually because {% include %} does not
-    # accept a compiled template as an argument.
+
     context['base_template'] = select_template( route('base') )
     return render_to_response( route('entry_details'), {}, context )

@@ -1,5 +1,5 @@
 {% extends base_template %}
-
+{% load sophie_parts %}
 {% block pre_body %}
 {% if blog.disqus_shortname %}
     <meta name="description" content="{{ entry.teaser|escape }}" />
@@ -19,7 +19,8 @@
 {% endblock title %}
 
 {% block navi %}
-{% include sidebar_template %}
+{% sophie_shows_feed_of blog %}
+{% sophie_lists_category_of blog %}
 {% endblock navi %}
 
 {% block main %}

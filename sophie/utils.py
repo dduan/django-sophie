@@ -3,11 +3,8 @@ Utilities for django-sophie
 '''
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.template.loader import get_template
-from django.template import TemplateDoesNotExist
 from django.conf import settings
 
-import os
 
 # set multiblog_enabled = True to enable multi blog url routing
 multiblog_enabled = getattr(settings, 'SOPHIE_ENABLES_MULTIBLOG', False)
@@ -29,20 +26,12 @@ def route_template(basename, extraname='', blog_slug='default'):
 
     returns a compiled template instance as well as its path
     '''
-    candidates = [
+    return [
         r'sophie/%s/%s_%s.html' % (blog_slug, basename, extraname),
         r'sophie/%s/%s.html' % (blog_slug, basename),
         r'sophie/default/%s_%s.html' % (basename, extraname),
         r'sophie/default/%s.html' % (basename),
     ]
-    # copied from django.template.loader.select_template
-    for template_name in candidates:
-        try:
-            return get_template(template_name), os.path.dirname(template_name)
-        except TemplateDoesNotExist:
-            continue
-    # If we get here, none of the templates could be loaded
-    raise TemplateDoesNotExist(', '.join(candidates))
 
 class LaidbackPaginator(Paginator):
     '''

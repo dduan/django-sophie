@@ -9,17 +9,67 @@ from sophie.utils import multiblog_enabled
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length = 200)
-    description = models.TextField(blank = True)
-    slug = models.SlugField()
-    page_length = models.PositiveIntegerField(default = 5)
-    feed_length = models.PositiveIntegerField(default = 15)
-    feed_service = models.CharField(max_length=200, blank=True)
-    highlight_code = models.BooleanField(default = True)
-    full_entry_in_page = models.BooleanField(default = True)
-    full_entry_in_feed = models.BooleanField(default = True)
-    g_analytics_tracking_id = models.CharField(max_length=50, blank=True)
-    disqus_shortname = models.CharField(max_length=200, blank=True)
+    title = models.CharField(
+        max_length = 200,
+        help_text = 'Title of the blog. No longer than 200 characters.'
+    )
+    description = models.TextField(
+        blank = True,
+        help_text = 'Describe your blog here.'
+    )
+    slug = models.SlugField(
+        unique=True,
+        help_text='''
+            Unique identifier of this blog, 
+            only numbers, letters, "-" and "_" are allowed
+        '''
+    )
+    page_length = models.PositiveIntegerField(
+        default = 5,
+        help_text = 'Number of entries displayed in each page.'
+    )
+    feed_length = models.PositiveIntegerField(
+        default = 15,
+        help_text = 'Number of entries contained in a feed.'
+    )
+    feed_service = models.CharField(
+        max_length = 200, 
+        blank = True,
+        help_text = 'Alternative feed URL provided by feed services such as '
+            '<a href="http://feedburner.com">Feedburner</a> '
+            'Leave blank to use the original feed provide by Sophie.'
+    )
+    highlight_code = models.BooleanField(
+        default = True,
+        help_text = 'Check this to highlight source code in your entries'
+
+    )
+    full_entry_in_page = models.BooleanField(
+        default = True,
+        help_text = 'Check this to display full text of entries '
+            'wherever they are listed'
+    )
+    full_entry_in_feed = models.BooleanField(
+        default = True,
+        help_text = 'Check this to display full text of entries in feeds.'
+    )
+    g_analytics_tracking_id = models.CharField(
+        max_length = 50, 
+        blank = True,
+        help_text = '<a href="http://code.google.com/apis/analytics/docs/'
+            'concepts/gaConceptsAccounts.html#accountID">'
+            'Google Analytics Tracking ID.'
+            '</a> Leave blank to disable the tracking code.'
+    )
+    disqus_shortname = models.CharField(
+        max_length = 200, 
+        blank = True,
+        help_text = '<a href="http://help.disqus.com/forums/107435/entries/'
+            '103511">The unique identifier</a> of your '
+            '<a href="http://disqus.com/">Disqus comment service</a>, '
+            'which is the default comment system Sophie uses. '
+            'Leave blank to disable the comment service.'
+    )
 
     class Meta:
         ordering = ['id']

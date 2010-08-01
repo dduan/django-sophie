@@ -19,10 +19,8 @@ class Blog(models.Model):
     )
     slug = models.SlugField(
         unique=True,
-        help_text='''
-            Unique identifier of this blog, 
-            only numbers, letters, "-" and "_" are allowed
-        '''
+        help_text='Unique identifier of this blog, '
+            'only numbers, letters, "-" and "_" are allowed'
     )
     page_length = models.PositiveIntegerField(
         default = 5,
@@ -30,8 +28,7 @@ class Blog(models.Model):
     )
     feed_length = models.PositiveIntegerField(
         default = 15,
-        help_text = 'Number of entries contained in a feed.'
-    )
+        help_text = 'Number of entries contained in a feed.')
     feed_service = models.CharField(
         max_length = 200, 
         blank = True,
@@ -121,12 +118,31 @@ class Blog(models.Model):
             return get_object_or_404(cls, slug=slug)
 
 class Category(models.Model):
-    title = models.CharField(max_length = 200)
-    description = models.TextField(blank = True)
-    slug = models.SlugField(unique = True)
-    blog = models.ForeignKey(Blog)
-    entry_count = models.IntegerField(default = 0)
-    shown = models.BooleanField(default = True)
+    title = models.CharField(
+        max_length = 200,
+        help_text = 'Title of this category. No longer than 200 characters.'
+    )
+    description = models.TextField(
+        blank = True,
+        help_text = "Why this category?"
+    )
+    slug = models.SlugField(
+        unique = True,
+        help_text = 'Unique identifier of this category, '
+            'only numbers, letters, "-" and "_" are allowed'
+    )
+    blog = models.ForeignKey(
+        Blog, 
+        help_text = 'Where does this category belong to?'
+    )
+    entry_count = models.IntegerField(
+        default = 0, 
+        help_text = 'The number of entries catogerized under here.'
+    )
+    shown = models.BooleanField(
+        default = True,
+        help_text = 'Check me to make this category visible.'
+    )
 
     objects = models.Manager()
     visible = ShownCategoryManager()

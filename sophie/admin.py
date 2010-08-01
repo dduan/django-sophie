@@ -90,7 +90,8 @@ class CategoryAdmin(admin.ModelAdmin):
                 'title', 
                 'slug',
                 'description',
-                ('shown', 'entry_count',),
+                'shown', 
+                'entry_count',
             ),
         }),
     )

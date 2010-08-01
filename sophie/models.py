@@ -19,7 +19,7 @@ class Blog(models.Model):
     )
     slug = models.SlugField(
         unique=True,
-        help_text='Unique identifier of this blog, '
+        help_text = 'Unique identifier of this blog, '
             'only numbers, letters, "-" and "_" are allowed'
     )
     page_length = models.PositiveIntegerField(
@@ -183,16 +183,26 @@ class Entry(models.Model):
             (HIDDEN_STATUS, 'Hidden'),
     )
 
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey( Category )
     blog = models.ForeignKey(Blog, editable = False)
-    slug = models.SlugField(unique = True, max_length = 250)
-    title = models.CharField(max_length = 250,
-            help_text = 'No longer than 250 characters'
-            )
+    slug = models.SlugField(
+        max_length = 350,
+        unique = True,
+        help_text = 'Unique identifier of this entry, '
+            'only numbers, letters, "-" and "_" are allowed. '
+            'No longer than 350 characters'
+    )
+    title = models.CharField(
+        max_length = 250,
+        help_text = 'No longer than 250 characters'
+    )
     pub_date = models.DateTimeField(default = datetime.datetime.now)
     last_update = models.DateTimeField(editable = False)
-    markup = models.PositiveIntegerField(default = MARKDOWN_SYNTAX, 
-            choices = MARKUP_CHOICES)
+    markup = models.PositiveIntegerField(
+        default = MARKDOWN_SYNTAX, 
+        choices = MARKUP_CHOICES,
+        help_text = "The markup language used to edit the entry."
+    )
     body = models.TextField(blank = True)
     body_html = models.TextField(blank = True, editable = False)
     teaser = models.TextField(help_text = 'Optional', blank = True)

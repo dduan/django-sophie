@@ -3,11 +3,21 @@ Release Notes
 
 Changes, improvements, new features and new issues.
 
-v0.0.2 (in development)
+v0.0.3 (in development)
 -----------------------
+
+v0.0.2
+-----------------------
+
+**Improved:**
+
+*   A more user friendly in edit/add interface in admin.
 
 **New Features:**
 
+*   Templatetag implementation of some template components.
+*   Seperate/costomizable template set per blog in addtion to the default ones.
+*   Optional Disqus comment system
 *   Set a futrue publish time to publish an entry in the future
 *   Single Blog Mode. See configuration.txt
 *   Optional google analytic track code per blog

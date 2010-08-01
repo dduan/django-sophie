@@ -83,6 +83,17 @@ class CategoryAdmin(admin.ModelAdmin):
     save_on_top = True
     readonly_fields = ('entry_count',)
     prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        (None, {
+            'fields': (
+                'blog', 
+                'title', 
+                'slug',
+                'description',
+                ('shown', 'entry_count',),
+            ),
+        }),
+    )
     list_display = (
         'title',
         'description',

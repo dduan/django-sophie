@@ -3,7 +3,7 @@ from sophie.models import Entry
 
 class BlogSitemap(Sitemap):
     " sitemap section for a blog "
-    changefreq = "never"
+    changefreq = "monthly"
     priority = 1.0
 
     def __init__(self, blog):

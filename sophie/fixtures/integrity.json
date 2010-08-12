@@ -1,0 +1,686 @@
+[
+    {
+        "pk": 9, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "blog", 
+            "name": "blog", 
+            "app_label": "sophie"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "category", 
+            "name": "category", 
+            "app_label": "sophie"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "contenttype", 
+            "name": "content type", 
+            "app_label": "contenttypes"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "entry", 
+            "name": "entry", 
+            "app_label": "sophie"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "group", 
+            "name": "group", 
+            "app_label": "auth"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "logentry", 
+            "name": "log entry", 
+            "app_label": "admin"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "message", 
+            "name": "message", 
+            "app_label": "auth"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "permission", 
+            "name": "permission", 
+            "app_label": "auth"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "session", 
+            "name": "session", 
+            "app_label": "sessions"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "site", 
+            "name": "site", 
+            "app_label": "sites"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "contenttypes.contenttype", 
+        "fields": {
+            "model": "user", 
+            "name": "user", 
+            "app_label": "auth"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "localhost:8000", 
+            "name": "local"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sophie.blog", 
+        "fields": {
+            "feed_length": 15, 
+            "disqus_shortname": "", 
+            "description": "Description of Blog 1", 
+            "title": "Blog 1", 
+            "highlight_code": true, 
+            "full_entry_in_page": true, 
+            "feed_service": "", 
+            "g_analytics_tracking_id": "", 
+            "page_length": 3, 
+            "slug": "blog-1", 
+            "full_entry_in_feed": true
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "sophie.blog", 
+        "fields": {
+            "feed_length": 15, 
+            "disqus_shortname": "", 
+            "description": "Description of Blog 2.", 
+            "title": "Blog 2", 
+            "highlight_code": true, 
+            "full_entry_in_page": true, 
+            "feed_service": "", 
+            "g_analytics_tracking_id": "", 
+            "page_length": 5, 
+            "slug": "blog-2", 
+            "full_entry_in_feed": true
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": false, 
+            "description": "Description of Category 1.", 
+            "title": "Category 1", 
+            "blog": 1, 
+            "entry_count": 2, 
+            "slug": "category-1"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 2.", 
+            "title": "Category 2", 
+            "blog": 1, 
+            "entry_count": 6, 
+            "slug": "category-2"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 3.", 
+            "title": "Category 3", 
+            "blog": 1, 
+            "entry_count": 0, 
+            "slug": "category-3"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 4.", 
+            "title": "Category 4", 
+            "blog": 10, 
+            "entry_count": 1, 
+            "slug": "category-4"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 19, 
+            "body": "Body of Essay 9.", 
+            "title": "Essay 9", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 9.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 10, 
+            "teaser": "Description of Essay 9.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:51:18", 
+            "slug": "essay-9", 
+            "teaser_html": "<p>Description of Essay 9.</p>"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 8.", 
+            "title": "Essay 8", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 8.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 8.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:50:28", 
+            "slug": "essay-8", 
+            "teaser_html": "<p>Description of Essay 8.</p>"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 7.", 
+            "title": "Essay 7", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 7.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 7.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:49:52", 
+            "slug": "essay-7", 
+            "teaser_html": "<p>Description of Essay 7.</p>"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 6.", 
+            "title": "Essay 6", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 6.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 6.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:49:11", 
+            "slug": "essay-6", 
+            "teaser_html": "<p>Description of Essay 6.</p>"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Description of Essay 5.", 
+            "title": "Essay 5", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Description of Essay 5.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 5.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:48:47", 
+            "slug": "essay-5", 
+            "teaser_html": "<p>Description of Essay 5.</p>"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 4.", 
+            "title": "Essay 4", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 4.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 4.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:48:08", 
+            "slug": "essay-4", 
+            "teaser_html": "<p>Description of Essay 4.</p>"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 3.", 
+            "title": "Essay 3", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 3.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 3.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:47:31", 
+            "slug": "essay-3", 
+            "teaser_html": "<p>Description of Essay 3.</p>"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 13, 
+            "body": "Body of Essay 2.", 
+            "title": "Essay 2", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 2.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 2.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:47:06", 
+            "slug": "essay-2", 
+            "teaser_html": "<p>Description of Essay 2.</p>"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 13, 
+            "body": "Body of Essay 1.", 
+            "title": "Essay 1", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 1.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 1.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:46:31", 
+            "slug": "essay-1", 
+            "teaser_html": "<p>Description of Essay 1.</p>"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_logentry", 
+            "name": "Can add log entry", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_logentry", 
+            "name": "Can change log entry", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_logentry", 
+            "name": "Can delete log entry", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_group", 
+            "name": "Can add group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_group", 
+            "name": "Can change group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_group", 
+            "name": "Can delete group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_message", 
+            "name": "Can add message", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_message", 
+            "name": "Can change message", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_message", 
+            "name": "Can delete message", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_permission", 
+            "name": "Can add permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_permission", 
+            "name": "Can change permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_permission", 
+            "name": "Can delete permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_user", 
+            "name": "Can add user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_user", 
+            "name": "Can change user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_user", 
+            "name": "Can delete user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_contenttype", 
+            "name": "Can add content type", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_contenttype", 
+            "name": "Can change content type", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_contenttype", 
+            "name": "Can delete content type", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_session", 
+            "name": "Can add session", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_session", 
+            "name": "Can change session", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_session", 
+            "name": "Can delete session", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_site", 
+            "name": "Can add site", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_site", 
+            "name": "Can change site", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_site", 
+            "name": "Can delete site", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_blog", 
+            "name": "Can add blog", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_blog", 
+            "name": "Can change blog", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_blog", 
+            "name": "Can delete blog", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_category", 
+            "name": "Can add category", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_category", 
+            "name": "Can change category", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_category", 
+            "name": "Can delete category", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_entry", 
+            "name": "Can add entry", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_entry", 
+            "name": "Can change entry", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_entry", 
+            "name": "Can delete entry", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "dan", 
+            "first_name": "DaNmarner", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2010-08-12 00:11:02", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$e16e7$fd1a23d90ef504cfb4cac6104faa69151495c9e6", 
+            "email": "dan@test.com", 
+            "date_joined": "2010-08-12 00:10:17"
+        }
+    }
+]

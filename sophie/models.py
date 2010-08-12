@@ -86,7 +86,7 @@ class Blog(models.Model):
         c = {}
         if multiblog_enabled:
             c.update({ 'blog_slug': self.slug })
-        return ('sophie_blog_feed', (), c)
+        return ('sophie_blog_feed_url', (), c)
 
     def get_feed(self):
         if self.feed_service:

@@ -6,7 +6,6 @@ if not settings.configured:
     print 'configuring settings'
     settings.configure(
         DATABASE_ENGINE = 'sqlite3',
-        SITE_ID = 1,
         TEMPLATE_LOADERS = (
             'django.template.loaders.filesystem.Loader',
             'django.template.loaders.app_directories.Loader',
@@ -22,6 +21,7 @@ if not settings.configured:
             'django.contrib.sitemaps',
             'sophie',
         ),
+        ROOT_URLCONF = 'sophie.tests.base_urls',
 
     )
 

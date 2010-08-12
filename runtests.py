@@ -3,7 +3,6 @@
 from django.conf import settings
 
 if not settings.configured:
-    print 'configuring settings'
     settings.configure(
         DATABASE_ENGINE = 'sqlite3',
         TEMPLATE_LOADERS = (
@@ -22,7 +21,8 @@ if not settings.configured:
             'sophie',
         ),
         ROOT_URLCONF = 'sophie.tests.base_urls',
-
+        SOPHIE_ENABLES_MULTIBLOG = True,
+        SITE_ID = 1,
     )
 
 from os.path import dirname, abspath
@@ -35,7 +35,7 @@ def runtests(*test_args):
         test_args = ['sophie']
     parent = dirname(abspath(__file__))
     sys.path.insert(0, parent)
-    failures = run_tests(test_args)
+    failures = run_tests(test_args, verbosity=1)
     sys.exit(failures)
 
 if __name__ == '__main__':

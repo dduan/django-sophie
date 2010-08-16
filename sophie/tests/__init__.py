@@ -1,2 +1,2 @@
-from integrity import *
-from utils import *
+from integrity_tests import *
+from utils_tests import *

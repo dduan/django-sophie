@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from sophie.utils import route_template
+from sophie.utils import route_template, LaidbackPaginator
 
 class UtilRouteTemplateTest(TestCase):
 
@@ -63,4 +63,26 @@ class UtilRouteTemplateTest(TestCase):
 
         tested_result = route_template(self.base, blog_slug=self.blog)
         self.assertEqual(tested_result, expected_result)
+
+class UtilLaidbackPaginatorPageMethodTest(TestCase):
+    def setUp(self):
+        self.dummy_data = range(0,20)
+        self.PAGE_BY = 5
+        self.pages = LaidbackPaginator(self.dummy_data, self.PAGE_BY)
+
+    def test_should_return_normally(self):
+        p = self.pages.page('2').object_list
+        self.assertEquals(p, [5, 6, 7, 8, 9])
+
+    def test_should_tolerate_nonsense_arg(self):
+        p = self.pages.page(None).object_list
+        self.assertEquals(p, [0, 1, 2, 3, 4])
+    
+    def test_should_accept_over_ranged_arg(self):
+        p = self.pages.page(10).object_list
+        self.assertEquals(p, [15, 16, 17, 18, 19])
+
+    def test_should_accept_under_ranged_arg(self):
+        p = self.pages.page(0).object_list
+        self.assertEquals(p, [15, 16, 17, 18, 19])
 

@@ -2,7 +2,7 @@
 {% load sophie_parts %}
 {% block pre_body %}
 {% if blog.disqus_shortname %}
-    <meta name="description" content="{{ entry.teaser|escape }}" />
+    <meta name="description" content="{{ entry.teaser_html|striptags|safe }}" />
     <script type="text/javascript">
     var disqus_shortname = '{{ blog.disqus_shortname }}';
     (function () {

@@ -270,5 +270,4 @@ class Entry(models.Model):
             do_markup = lambda x: x
         
         self.body_html = do_markup(self.body)
-        if self.teaser:
-            self.teaser_html = do_markup(self.teaser)
+        self.teaser_html = do_markup(self.teaser)

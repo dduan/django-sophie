@@ -272,3 +272,5 @@ class Entry(models.Model):
         self.body_html = do_markup(self.body)
         if self.teaser:
             self.teaser_html = do_markup(self.teaser)
+
+import sophie.plugins

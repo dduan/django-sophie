@@ -21,8 +21,16 @@ else:
 page_bit = r'(?:(?P<page_num>\d+)/)?'
 slug_bit = r'(?P<%s_slug>[\w-]+)'
 
+urlpatterns = patterns('',)
+
+from sophie.plugins import URLStructure
+
+for struct in URLStructure.plugins:
+    urlpatterns += struct.urlpatterns
+    
+
 # Feed urls
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^%sfeed/$' % (blog_bit), BlogFeed(), name='sophie_blog_feed_url'),
     url(r'^%scategory/%s/feed/$' % (blog_bit, slug_bit % 'category'), 
         CategoryFeed(), name='sophie_category_feed_url'

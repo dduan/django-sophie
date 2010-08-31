@@ -6,5 +6,6 @@ class PluginMount(type):
             cls.plugins.append(cls)
 
 
-class ActionProvider:
+class URLStructure:
     __metaclass__ = PluginMount
+

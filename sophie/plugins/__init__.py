@@ -9,21 +9,21 @@ class PluginMount(type):
 class URLStructure:
     __metaclass__ = PluginMount
 
-from os import listdir
-from os.path import basename, dirname, isdir
+# Auto-discover the modules under this directory.
 
-for mod_path in listdir(dirname(__file__)):
-    mod_path = basename(mod_path)
-    if isdir(mod_path):
-        mod_name = mod_path
-    elif mod_path.endswith('.py'):
-        if basename(mod_path) == '__init__.py':
+from os import listdir
+from os.path import basename, dirname
+
+for mod in listdir(dirname(__file__)):
+    mod = basename(mod)
+    if mod.endswith('.py'):
+        if mod == '__init__.py':
+            # To prevent duplicate excution of the code in this file
             continue
-        mod_name = mod_path[:-3]
-    else:
-        continue
+        mod = mod[:-3]
 
     try:
-        __import__(basename(mod_name))
+        # The code in dicovered modules gets excuted by being imported here
+        __import__(mod, globals(), locals(), [], -1)
     except ImportError:
         pass

@@ -1,0 +1,290 @@
+[
+    {
+        "pk": 1, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "localhost:8000", 
+            "name": "local"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sophie.blog", 
+        "fields": {
+            "feed_length": 15, 
+            "disqus_shortname": "", 
+            "description": "Description of Blog 1", 
+            "title": "Blog 1", 
+            "highlight_code": true, 
+            "full_entry_in_page": true, 
+            "feed_service": "", 
+            "g_analytics_tracking_id": "", 
+            "page_length": 3, 
+            "slug": "blog-1", 
+            "full_entry_in_feed": true
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "sophie.blog", 
+        "fields": {
+            "feed_length": 15, 
+            "disqus_shortname": "", 
+            "description": "Description of Blog 2.", 
+            "title": "Blog 2", 
+            "highlight_code": true, 
+            "full_entry_in_page": true, 
+            "feed_service": "", 
+            "g_analytics_tracking_id": "", 
+            "page_length": 5, 
+            "slug": "blog-2", 
+            "full_entry_in_feed": true
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": false, 
+            "description": "Description of Category 1.", 
+            "title": "Category 1", 
+            "blog": 1, 
+            "entry_count": 2, 
+            "slug": "category-1"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 2.", 
+            "title": "Category 2", 
+            "blog": 1, 
+            "entry_count": 6, 
+            "slug": "category-2"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 3.", 
+            "title": "Category 3", 
+            "blog": 1, 
+            "entry_count": 0, 
+            "slug": "category-3"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "sophie.category", 
+        "fields": {
+            "shown": true, 
+            "description": "Description of Category 4.", 
+            "title": "Category 4", 
+            "blog": 10, 
+            "entry_count": 1, 
+            "slug": "category-4"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 19, 
+            "body": "Body of Essay 9.", 
+            "title": "Essay 9", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 9.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 10, 
+            "teaser": "Description of Essay 9.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:51:18", 
+            "slug": "essay-9", 
+            "teaser_html": "<p>Description of Essay 9.</p>"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 8.", 
+            "title": "Essay 8", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 8.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 8.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:50:28", 
+            "slug": "essay-8", 
+            "teaser_html": "<p>Description of Essay 8.</p>"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 7.", 
+            "title": "Essay 7", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 7.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 7.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:49:52", 
+            "slug": "essay-7", 
+            "teaser_html": "<p>Description of Essay 7.</p>"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 6.", 
+            "title": "Essay 6", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 6.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 6.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:49:11", 
+            "slug": "essay-6", 
+            "teaser_html": "<p>Description of Essay 6.</p>"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Description of Essay 5.", 
+            "title": "Essay 5", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Description of Essay 5.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 5.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:48:47", 
+            "slug": "essay-5", 
+            "teaser_html": "<p>Description of Essay 5.</p>"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 4.", 
+            "title": "Essay 4", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 4.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 4.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:48:08", 
+            "slug": "essay-4", 
+            "teaser_html": "<p>Description of Essay 4.</p>"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 15, 
+            "body": "Body of Essay 3.", 
+            "title": "Essay 3", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 3.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 3.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:47:31", 
+            "slug": "essay-3", 
+            "teaser_html": "<p>Description of Essay 3.</p>"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 13, 
+            "body": "Body of Essay 2.", 
+            "title": "Essay 2", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 2.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 2.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:47:06", 
+            "slug": "essay-2", 
+            "teaser_html": "<p>Description of Essay 2.</p>"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "sophie.entry", 
+        "fields": {
+            "category": 13, 
+            "body": "Body of Essay 1.", 
+            "title": "Essay 1", 
+            "markup": 1, 
+            "author": 1, 
+            "body_html": "<p>Body of Essay 1.</p>", 
+            "last_update": "2010-08-12 00:14:53", 
+            "blog": 1, 
+            "teaser": "Description of Essay 1.", 
+            "status": 1, 
+            "allow_comment": true, 
+            "pub_date": "2010-08-12 04:46:31", 
+            "slug": "essay-1", 
+            "teaser_html": "<p>Description of Essay 1.</p>"
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "dan", 
+            "first_name": "DaNmarner", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2010-08-12 00:11:02", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$e16e7$fd1a23d90ef504cfb4cac6104faa69151495c9e6", 
+            "email": "dan@test.com", 
+            "date_joined": "2010-08-12 00:10:17"
+        }
+    }
+]

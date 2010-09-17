@@ -16,6 +16,7 @@ def route_template(basename, extraname='', blog_slug='default'):
     basename:   the file name of the template.
     extraname:  the extra infomation about a template, usually a slug of an
                 entry, category or tag.
+    blog_slug:  the slug of the blog being accessed
 
     The given basename is looked for in the following order:
 
@@ -24,7 +25,7 @@ def route_template(basename, extraname='', blog_slug='default'):
         3.  sophie/default/[basename]_[extraname].html
         4.  sophie/default/[basename].html
 
-    returns a compiled template instance as well as its path
+    returns a list of candidiates of the requested template.
     '''
     return [
         r'sophie/%s/%s_%s.html' % (blog_slug, basename, extraname),

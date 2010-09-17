@@ -1,3 +1,5 @@
+from sophie.utils import blog_bit, page_bit
+
 class PluginMount(type):
     def __init__(cls, name, bases, attrs):
         if not hasattr(cls, 'plugins'):
@@ -8,6 +10,28 @@ class PluginMount(type):
 
 class URLStructure:
     __metaclass__ = PluginMount
+    urlpatterns = ()
+    pagination_suffix = False
+    blog_prefix = True
+
+    @classmethod
+    def get_patterns(cls):
+        if cls.blog_prefix:
+            cls._add_blog_prefix()
+        if cls.pagination:
+            cls._add_pagination_suffix()
+        return cls.urlpatterns
+
+    @classmethod
+    def _add_blog_prefix(cls):
+        for p,i in enumerate(cls.urlpatterns):
+            cls.urlpatterns[i] = blog_bit + p
+
+    @classmethod
+    def _add_pagination_suffix(cls):
+        for i in range(len(cls.urlpatterns)):
+            cls.urlpatterns[i] += page_bit
+
 
 # Auto-discover the modules under this directory.
 

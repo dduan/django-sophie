@@ -7,7 +7,6 @@ import datetime
 from sophie.managers import LiveEntryManager, ShownCategoryManager
 from sophie.utils import multiblog_enabled
 
-
 class Blog(models.Model):
     title = models.CharField(
         max_length = 200,

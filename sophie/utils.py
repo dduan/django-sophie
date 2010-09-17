@@ -54,3 +54,9 @@ class LaidbackPaginator(Paginator):
         except (EmptyPage, InvalidPage):
             return super(LaidbackPaginator, self).page(self.num_pages)
 
+# Stuff used in urls.py as well as in plugins.URLStructure
+if multiblog_enabled:
+    blog_bit = r'(?:(?P<blog_slug>[\w-]+)/)?'
+else:
+    blog_bit = ''
+page_bit = r'(?:(?P<page_num>\d+)/)?'

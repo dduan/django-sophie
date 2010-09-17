@@ -11,14 +11,9 @@ from django.conf.urls.defaults import *
 from sophie.models import Blog
 from sophie.sitemaps import BlogSitemap
 from sophie.feeds import BlogFeed, CategoryFeed
-from sophie.models import multiblog_enabled
+from sophie.utils import multiblog_enabled, blog_bit, page_bit
 
-# To save some typing later...
-if multiblog_enabled:
-    blog_bit = r'(?:(?P<blog_slug>[\w-]+)/)?'
-else:
-    blog_bit = ''
-page_bit = r'(?:(?P<page_num>\d+)/)?'
+# This is here to save some typings later..
 slug_bit = r'(?P<%s_slug>[\w-]+)'
 
 urlpatterns = patterns('',)
@@ -26,7 +21,7 @@ urlpatterns = patterns('',)
 from sophie.plugins import URLStructure
 
 for struct in URLStructure.plugins:
-    urlpatterns += struct.urlpatterns
+    urlpatterns += struct.get_patterns()
     
 
 # Feed urls
